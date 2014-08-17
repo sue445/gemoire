@@ -14,7 +14,8 @@ build:
                version: 2.1.2
 
         # A step that executes `bundle install` command
-        - bundle-install
+        - bundle-install:
+               jobs: 4
 
         # A step that prepares the database.yml using the database in services
         # - rails-database-yml
