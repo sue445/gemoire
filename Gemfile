@@ -5,6 +5,7 @@ ruby '2.1.2'
 gem 'padrino', '0.12.3'
 
 gem 'activerecord', '~> 4.1.4', require: 'active_record'
+gem 'annotate'
 gem 'rake'
 gem 'sass'
 gem 'slim'
