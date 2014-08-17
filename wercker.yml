@@ -31,5 +31,9 @@ build:
 
         # Add more steps here:
         - script:
+                name: migration
+                code: RACK_ENV=test bundle exec padrino rake ar:migrate
+
+        - script:
                 name: rspec
                 code: bundle exec rspec
