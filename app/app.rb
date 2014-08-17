@@ -63,5 +63,7 @@ module Gemoire
     #     render 'errors/500'
     #   end
     #
+
+    Slim::Engine.default_options[:pretty] = true if Padrino.env == :development
   end
 end

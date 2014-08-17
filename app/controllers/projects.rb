@@ -1,5 +1,5 @@
 Gemoire::App.controllers :projects do
-  
+
   # get :index, :map => '/foo/bar' do
   #   session[:foo] = 'bar'
   #   render 'index'
@@ -18,9 +18,9 @@ Gemoire::App.controllers :projects do
   # get '/example' do
   #   'Hello world!'
   # end
-  
-  get :index do
 
+  get :index, map: "/" do
+    render "index"
   end
 
 end
