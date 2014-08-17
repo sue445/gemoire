@@ -7,6 +7,8 @@ class CreateProjects < ActiveRecord::Migration
       t.string :commit
       t.timestamps
     end
+
+    add_index :projects, [:name, :branch], unique: true
   end
 
   def self.down
