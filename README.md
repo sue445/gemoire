@@ -5,7 +5,13 @@
 ## Setup
 ```bash
 bundle exec padrino rake ar:migrate
+```
+
+## Run development
+```bash
 bundle exec padrino start
+# or
+bundle exec foreman start
 ```
 
 ## Test

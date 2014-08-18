@@ -20,11 +20,18 @@ GEM
     arel (5.0.1.20140414130214)
     builder (3.2.2)
     diff-lcs (1.2.5)
+    dotenv (0.11.1)
+      dotenv-deployment (~> 0.0.2)
+    dotenv-deployment (0.0.2)
+    foreman (0.74.0)
+      dotenv (~> 0.11.1)
+      thor (~> 0.19.1)
     http_router (0.11.1)
       rack (>= 1.0.0)
       url_mount (~> 0.2.1)
     i18n (0.6.11)
     json (1.8.1)
+    kgio (2.9.2)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -71,6 +78,7 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    raindrops (0.13.0)
     rake (10.3.2)
     rspec (3.0.0)
       rspec-core (~> 3.0.0)
@@ -102,6 +110,12 @@ GEM
       polyglot (>= 0.3.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    unicorn (4.8.3)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
+    unicorn-padrino (0.0.2)
+      unicorn
     url_mount (0.2.1)
       rack
 
@@ -111,6 +125,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord (~> 4.1.4)
   annotate
+  foreman
   padrino (= 0.12.3)
   rack-test
   rake
@@ -118,3 +133,4 @@ DEPENDENCIES
   sass
   slim
   sqlite3
+  unicorn-padrino
