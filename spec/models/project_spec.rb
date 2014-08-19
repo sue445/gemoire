@@ -1,3 +1,7 @@
 RSpec.describe Project do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:project){ create(:project) }
+
+  it "factory" do
+    p project
+  end
 end

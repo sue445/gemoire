@@ -14,6 +14,8 @@ gem 'sqlite3'
 gem 'unicorn-padrino'
 
 group :test do
+  gem 'factory_girl'
+  gem 'faker'
   gem 'rack-test', require: 'rack/test'
   gem 'rspec', "~> 3.0.0"
 end

@@ -23,6 +23,10 @@ GEM
     dotenv (0.11.1)
       dotenv-deployment (~> 0.0.2)
     dotenv-deployment (0.0.2)
+    factory_girl (4.4.0)
+      activesupport (>= 3.0.0)
+    faker (1.4.3)
+      i18n (~> 0.5)
     foreman (0.74.0)
       dotenv (~> 0.11.1)
       thor (~> 0.19.1)
@@ -125,6 +129,8 @@ PLATFORMS
 DEPENDENCIES
   activerecord (~> 4.1.4)
   annotate
+  factory_girl
+  faker
   foreman
   padrino (= 0.12.3)
   rack-test
