@@ -2,6 +2,10 @@
 
 [![wercker status](https://app.wercker.com/status/77a69cca299dd5e4b69c2c972beadcda/m "wercker status")](https://app.wercker.com/project/bykey/77a69cca299dd5e4b69c2c972beadcda)
 
+## Requirements
+* Ruby 2.1.2
+* git 1.6+
+
 ## Setup
 ```bash
 cp config/database.yml{.sqlite3,}

@@ -11,11 +11,11 @@ build:
     steps:
         # Uncomment this to force RVM to use a specific Ruby version
         - rvm-use:
-               version: 2.1.2
+            version: 2.1.2
 
         # A step that executes `bundle install` command
         - bundle-install:
-               jobs: 4
+            jobs: 4
 
         # A step that prepares the database.yml using the database in services
         # - rails-database-yml
@@ -31,11 +31,11 @@ build:
 
         # Add more steps here:
         - script:
-                name: Setup database
-                code: |
-                    cp config/database.yml{.sqlite3,}
-                    RACK_ENV=test bundle exec rake ar:migrate
+            name: Setup database
+            code: |
+                cp config/database.yml{.sqlite3,}
+                RACK_ENV=test bundle exec rake ar:migrate
 
         - script:
-                name: rspec
-                code: bundle exec rspec
+            name: rspec
+            code: bundle exec rspec --tag ~skip_on_ci

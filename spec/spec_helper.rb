@@ -2,7 +2,7 @@ RACK_ENV = 'test' unless defined?(RACK_ENV)
 require File.expand_path(File.dirname(__FILE__) + "/../config/boot")
 Dir[File.expand_path(File.dirname(__FILE__) + "/../app/helpers/**/*.rb")].each(&method(:require))
 
-require 'database_rewinder'
+require 'database_cleaner'
 require 'factory_girl'
 
 # cf. https://github.com/thoughtbot/factory_girl/wiki/Installation#padrino-installation
@@ -93,15 +93,16 @@ RSpec.configure do |config|
   config.include Rack::Test::Methods
   config.include FactoryGirl::Syntax::Methods
 
-  # database_rewinder
-  config.before :suite do
-    DatabaseRewinder.clean_all
-    # or
-    # DatabaseRewinder.clean_with :any_arg_that_would_be_actually_ignored_anyway
+  # database_cleaner
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
   end
 
-  config.after :each do
-    DatabaseRewinder.clean
+  config.around(:each) do |example|
+    DatabaseCleaner.cleaning do
+      example.run
+    end
   end
 end
 

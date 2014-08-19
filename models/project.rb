@@ -16,5 +16,17 @@
 #
 
 class Project < ActiveRecord::Base
+  def git_clone
+    Git.clone(self.ssh_url, self.id.to_s, path: Project.satellite_dir)
+  end
+
+  def self.satellite_dir
+    # TODO
+  end
+
+  private
+  def repository_dir
+    File.join(Project.satellite_dir, self.id.to_s)
+  end
 
 end
