@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/amatsuda/database_rewinder.git
+  revision: c12bd3f5126bd786f993324d6194efe637af50dd
+  specs:
+    database_rewinder (0.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -129,6 +135,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord (~> 4.1.4)
   annotate
+  database_rewinder!
   factory_girl
   faker
   foreman

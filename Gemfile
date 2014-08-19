@@ -14,6 +14,7 @@ gem 'sqlite3'
 gem 'unicorn-padrino'
 
 group :test do
+  gem 'database_rewinder', github: "amatsuda/database_rewinder"
   gem 'factory_girl'
   gem 'faker'
   gem 'rack-test', require: 'rack/test'
