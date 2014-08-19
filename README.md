@@ -4,6 +4,12 @@
 
 ## Setup
 ```bash
+cp config/database.yml{.sqlite3,}
+# or
+cp config/database.yml{.mysql,}
+# or
+cp config/database.yml{.postgresql,}
+
 bundle exec padrino rake ar:migrate
 ```
 

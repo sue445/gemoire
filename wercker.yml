@@ -31,8 +31,10 @@ build:
 
         # Add more steps here:
         - script:
-                name: migration
-                code: RACK_ENV=test bundle exec rake ar:migrate
+                name: Setup database
+                code: |
+                    cp config/database.yml{.sqlite3,}
+                    RACK_ENV=test bundle exec rake ar:migrate
 
         - script:
                 name: rspec
