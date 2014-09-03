@@ -119,3 +119,11 @@ def app(app = nil, &blk)
   @app ||= block_given? ? app.instance_eval(&blk) : app
   @app ||= Padrino.application
 end
+
+def spec_dir
+  Pathname(__dir__)
+end
+
+def dummy_dir
+  spec_dir.join("dummy")
+end

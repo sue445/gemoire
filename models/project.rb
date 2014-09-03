@@ -20,6 +20,20 @@ class Project < ActiveRecord::Base
     Git.clone(self.ssh_url, self.id.to_s, path: Project.satellite_dir)
   end
 
+  def generate_doc
+    YARD::CLI::Yardoc.run(
+      repository_dir,
+      "--output-dir=#{doc_dir}",
+      "--db=#{repository_dir}/.yardoc",
+      "--no-stats",
+      "--quiet"
+    )
+  end
+
+  def doc_dir
+    # TODO
+  end
+
   def self.satellite_dir
     # TODO
   end

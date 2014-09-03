@@ -13,6 +13,7 @@ gem 'sass'
 gem 'slim'
 gem 'sqlite3'
 gem 'unicorn-padrino'
+gem 'yard'
 
 group :test do
   gem 'database_cleaner'
@@ -21,4 +22,9 @@ group :test do
   gem 'rack-test', require: 'rack/test'
   gem 'rspec', "~> 3.0.0"
   gem 'rspec-temp_dir', '0.0.2'
+end
+
+group :development do
+  gem 'pry'    , group: :test
+  gem 'pry-nav', group: :test
 end
