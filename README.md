@@ -8,11 +8,18 @@
 
 ## Setup
 ```bash
+cp config/global/gemoire.yml{.example,}
+vi config/global/gemoire.yml
+
+#####
 cp config/database.yml{.sqlite3,}
 # or
 cp config/database.yml{.mysql,}
 # or
 cp config/database.yml{.postgresql,}
+#####
+
+vi config/database.yml
 
 bundle exec padrino rake ar:migrate
 ```

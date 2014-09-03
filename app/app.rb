@@ -65,5 +65,13 @@ module Gemoire
     #
 
     Slim::Engine.default_options[:pretty] = true if Padrino.env == :development
+
+    Global.configure do |config|
+      config.environment      = Padrino.env.to_s
+      config.config_directory = Padrino.root("config/global")
+    end
+
+    FileUtils.mkdir_p(Global.gemoire.satellite_path)
+    FileUtils.mkdir_p(Global.gemoire.doc_path)
   end
 end

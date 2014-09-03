@@ -31,11 +31,11 @@ class Project < ActiveRecord::Base
   end
 
   def doc_dir
-    # TODO
+    File.join(Global.gemoire.doc_path, self.name)
   end
 
   def self.satellite_dir
-    # TODO
+    Global.gemoire.satellite_path
   end
 
   private

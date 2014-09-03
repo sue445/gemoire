@@ -11,3 +11,5 @@ vendor/bundle/
 config/database.yml
 .yardoc/
 doc/
+config/global/gemoire.yml
+public/doc/

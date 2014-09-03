@@ -1,0 +1,9 @@
+default:
+  doc_path:       public/doc
+  satellite_path: tmp/satellite
+
+development:
+
+test:
+
+production:

@@ -31,8 +31,9 @@ build:
 
         # Add more steps here:
         - script:
-            name: Setup database
+            name: Setup configurations
             code: |
+                cp config/global/gemoire.yml{.example,}
                 cp config/database.yml{.sqlite3,}
                 RACK_ENV=test bundle exec rake ar:migrate
 
