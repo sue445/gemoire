@@ -5,7 +5,7 @@
 #  id         :integer          not null, primary key
 #  name       :string(255)      not null
 #  branch     :string(255)      default("master"), not null
-#  ssh_url    :string(255)      not null
+#  remote_url :string(255)      not null
 #  commit     :string(255)
 #  created_at :datetime
 #  updated_at :datetime
@@ -17,7 +17,7 @@
 
 class Project < ActiveRecord::Base
   def git_clone
-    Git.clone(self.ssh_url, self.id.to_s, path: satellite_root_dir)
+    Git.clone(self.remote_url, self.id.to_s, path: satellite_root_dir)
   end
 
   def generate_doc

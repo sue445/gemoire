@@ -2,7 +2,7 @@ RSpec.describe Project do
   describe "#git_clone" do
     subject{ project.git_clone }
 
-    let(:project)    { create(:project, name: "rubicure", ssh_url: remote_url) }
+    let(:project)    { create(:project, name: "rubicure", remote_url: remote_url) }
     let(:cloned_repo){ Pathname("#{temp_dir}/#{project.id}") }
     let(:cloned_file){ Pathname("#{cloned_repo}/README.md") }
 
