@@ -16,8 +16,21 @@
 #
 
 class Project < ActiveRecord::Base
+  def pull_remote
+    if repository_dir.exist?
+      git.fetch
+      git.reset_hard("origin/#{branch}")
+    else
+      git_clone
+    end
+  end
+
   def git_clone
     Git.clone(self.remote_url, self.id.to_s, path: satellite_root_dir)
+  end
+
+  def git_fetch
+    git.fetch
   end
 
   def generate_doc
@@ -31,6 +44,10 @@ class Project < ActiveRecord::Base
   end
 
   private
+  def git
+    @git ||= Git.open(repository_dir, log: logger, repository: repository_dir.join(".git"))
+  end
+
   def doc_dir
     doc_root_dir.join(self.name, self.branch)
   end
