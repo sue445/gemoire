@@ -8,28 +8,30 @@ RSpec.describe Project do
 
     include_context "uses temp dir"
 
+    shared_examples :a_git_clone_method do
+      it "should clone from repository" do
+        subject
+        expect(cloned_file).to be_exist
+      end
+    end
+
     before do
       allow(Global.gemoire).to receive(:satellite_root_dir){ temp_dir }
     end
 
     context "When ssh url", skip_on_ci: true do
       let(:remote_url){ "git@github.com:sue445/sample-repo.git" }
-
-      it "should clone from repository" do
-        subject
-        expect(cloned_repo).to be_exist
-        expect(cloned_file).to be_exist
-      end
+      it_behaves_like :a_git_clone_method
     end
 
     context "When https url" do
       let(:remote_url){ "https://github.com/sue445/sample-repo.git" }
+      it_behaves_like :a_git_clone_method
+    end
 
-      it "should clone from repository" do
-        subject
-        expect(cloned_repo).to be_exist
-        expect(cloned_file).to be_exist
-      end
+    context "When git url" do
+      let(:remote_url){ "git://github.com/sue445/sample-repo.git" }
+      it_behaves_like :a_git_clone_method
     end
   end
 
@@ -46,7 +48,8 @@ RSpec.describe Project do
       project.git_clone
     end
 
-    it "should be fetch" do
+    it "should be git fetch" do
+      expect(project).to receive(:git_fetch_and_reset)
       subject
     end
   end

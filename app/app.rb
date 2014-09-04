@@ -71,7 +71,7 @@ module Gemoire
       config.config_directory = Padrino.root("config/global")
     end
 
-    FileUtils.mkdir_p(Global.gemoire.satellite_path)
-    FileUtils.mkdir_p(Global.gemoire.doc_path)
+    FileUtils.mkdir_p(Global.gemoire.satellite_root_dir)
+    FileUtils.mkdir_p(Global.gemoire.doc_root_dir)
   end
 end
