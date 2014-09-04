@@ -1,8 +1,8 @@
 RSpec.describe Project do
-  describe "#git_clone", skip_on_ci: true do
+  describe "#git_clone" do
     subject{ project.git_clone }
 
-    let(:project)    { create(:project, name: "rubicure", ssh_url: "git@github.com:sue445/rubicure.git") }
+    let(:project)    { create(:project, name: "rubicure", ssh_url: remote_url) }
     let(:cloned_repo){ Pathname("#{temp_dir}/#{project.id}") }
     let(:cloned_file){ Pathname("#{cloned_repo}/README.md") }
 
@@ -12,10 +12,24 @@ RSpec.describe Project do
       allow(Global.gemoire).to receive(:satellite_root_dir){ temp_dir }
     end
 
-    it "should clone from repository" do
-      subject
-      expect(cloned_repo).to be_exist
-      expect(cloned_file).to be_exist
+    context "When ssh url", skip_on_ci: true do
+      let(:remote_url){ "git@github.com:sue445/rubicure.git" }
+
+      it "should clone from repository" do
+        subject
+        expect(cloned_repo).to be_exist
+        expect(cloned_file).to be_exist
+      end
+    end
+
+    context "When https url" do
+      let(:remote_url){ "https://github.com/sue445/rubicure.git" }
+
+      it "should clone from repository" do
+        subject
+        expect(cloned_repo).to be_exist
+        expect(cloned_file).to be_exist
+      end
     end
   end
 
