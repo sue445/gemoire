@@ -9,7 +9,7 @@ RSpec.describe Project do
     include_context "uses temp dir"
 
     before do
-      allow(Project).to receive(:satellite_dir){ temp_dir }
+      allow(Global.gemoire).to receive(:satellite_root_dir){ temp_dir }
     end
 
     it "should clone from repository" do
@@ -23,14 +23,14 @@ RSpec.describe Project do
     subject{ project.generate_doc }
 
     let(:project) { create(:project, name: "dummy") }
-    let(:doc_dir) { Pathname("#{temp_dir}/#{project.name}") }
+    let(:doc_dir) { Pathname("#{temp_dir}/#{project.name}/#{project.branch}") }
     let(:doc_file){ Pathname("#{doc_dir}/index.html") }
 
     include_context "uses temp dir"
 
     before do
-      allow(project).to receive(:repository_dir){ dummy_dir.to_s }
-      allow(project).to receive(:doc_dir){ doc_dir.to_s }
+      allow(project).to receive(:repository_dir){ dummy_dir }
+      allow(Global.gemoire).to receive(:doc_root_dir){ temp_dir }
     end
 
     it "should generate doc" do

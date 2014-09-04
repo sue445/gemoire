@@ -1,6 +1,6 @@
 default:
-  doc_path:       public/doc
-  satellite_path: tmp/satellite
+  doc_root_dir:       public/doc
+  satellite_root_dir: tmp/satellite
 
 development:
 
