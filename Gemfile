@@ -6,6 +6,7 @@ gem 'padrino', '0.12.3'
 
 gem 'activerecord', '~> 4.1.4', require: 'active_record'
 gem 'annotate'
+gem 'bcrypt-ruby', require: 'bcrypt'
 gem 'foreman'
 gem 'git'
 gem 'global'
