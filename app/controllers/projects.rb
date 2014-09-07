@@ -20,7 +20,23 @@ Gemoire::App.controllers :projects do
   # end
 
   get :index, map: "/" do
-    render "index"
+    @projects = Project.all
+    render :index
+  end
+
+  get :new do
+    @project = Project.new
+    render :new
+  end
+
+  post :create do
+    @project = Project.new(params[:project])
+    if @project.save
+      flash[:success] = "Project was successfully created."
+      redirect url(:projects, :index)
+    else
+      render :new
+    end
   end
 
 end

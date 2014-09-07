@@ -102,7 +102,7 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
-    allow(Project).to receive(:git_logger){ Logger.new(STDOUT) }
+    allow_any_instance_of(Project).to receive(:git_logger){ Logger.new(STDOUT) }
   end
 
   config.around(:each) do |example|

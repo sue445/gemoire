@@ -42,6 +42,7 @@ module Gemoire
     # disable :flash                # Disables sinatra-flash (enabled by default if Sinatra::Flash is defined)
     # layout  :my_layout            # Layout can be in views/layouts/foo.ext or views/foo.ext (default :application)
     #
+    set :default_builder, ::Bootstrap3FormBuilder
 
     ##
     # You can configure for a specified environment like:

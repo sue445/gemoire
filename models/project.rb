@@ -16,6 +16,10 @@
 #
 
 class Project < ActiveRecord::Base
+  validates_presence_of :name, :branch, :remote_url
+
+  after_save :update_async
+
   def pull_remote
     if repository_dir.exist?
       git_fetch_and_reset
@@ -38,13 +42,13 @@ class Project < ActiveRecord::Base
     )
   end
 
-  def self.git_logger
-    Logger.new(Padrino.root("log", "#{Padrino.env}.log"))
-  end
-
   private
   def git
-    @git ||= Git.open(repository_dir, log: Project.git_logger, repository: repository_dir.join(".git"))
+    @git ||= Git.open(repository_dir, log: git_logger, repository: repository_dir.join(".git"))
+  end
+
+  def git_logger
+    Logger.new(Padrino.root("log", "#{Padrino.env}.log"))
   end
 
   def doc_dir
@@ -56,15 +60,25 @@ class Project < ActiveRecord::Base
   end
 
   def satellite_root_dir
-    Pathname(Global.gemoire.satellite_root_dir)
+    absolute_path(Global.gemoire.satellite_root_dir)
   end
 
   def doc_root_dir
-    Pathname(Global.gemoire.doc_root_dir)
+    absolute_path(Global.gemoire.doc_root_dir)
   end
 
   def git_fetch_and_reset
     git.fetch
     git.reset_hard("origin/#{branch}")
+  end
+
+  def update_async
+    pull_remote
+  end
+
+  def absolute_path(path)
+    dir = Pathname(path)
+    dir = Pathname(Padrino.root(path)) if dir.relative?
+    dir
   end
 end
