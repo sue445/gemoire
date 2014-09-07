@@ -1,1 +1,20 @@
 h1 Gemoire
+
+table.table.table-striped
+  thead
+    tr
+      th name
+      th remote_url
+      th branch
+      th commit
+      th created_at
+      th updated_at
+  tbody
+    - @projects.each do |project|
+      tr
+        td = project.name
+        td = project.remote_url
+        td = project.branch
+        td = project.commit
+        td = project.created_at
+        td = project.updated_at

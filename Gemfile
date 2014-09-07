@@ -4,7 +4,8 @@ ruby '2.1.2'
 
 gem 'padrino', '0.12.3'
 
-gem 'activerecord', '~> 4.1.4', require: 'active_record'
+gem 'activerecord' , '~> 4.1.4', require: 'active_record'
+gem 'activesupport', '~> 4.1.4', require: 'active_support'
 gem 'annotate'
 gem 'bcrypt-ruby', require: 'bcrypt'
 gem 'foreman'

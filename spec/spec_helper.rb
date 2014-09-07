@@ -102,6 +102,7 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
+    allow_any_instance_of(Project).to receive(:update_async)
     allow_any_instance_of(Project).to receive(:git_logger){ Logger.new(STDOUT) }
   end
 

@@ -41,6 +41,14 @@ end
 # Add your after (RE)load hooks here
 #
 Padrino.after_load do
+  Global.configure do |config|
+    config.environment      = Padrino.env.to_s
+    config.config_directory = Padrino.root("config/global")
+  end
+
+  FileUtils.mkdir_p(Global.gemoire.satellite_root_dir)
+  FileUtils.mkdir_p(Global.gemoire.doc_root_dir)
+  Time.zone = Global.gemoire.time_zone
 end
 
 Padrino.load!

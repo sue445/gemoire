@@ -147,6 +147,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord (~> 4.1.4)
+  activesupport (~> 4.1.4)
   annotate
   bcrypt-ruby
   database_cleaner
