@@ -1,0 +1,31 @@
+- error = @project.errors.include?(:name)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :name, :class => 'control-label'
+  div class='controls'
+    = f.text_field :name, :class => 'form-control input-large input-with-feedback', :autofocus => true
+    span class='help-inline' = error ? f.error_message_on(:name, :class => 'text-error') : pat(:example)
+- error = @project.errors.include?(:branch)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :branch, :class => 'control-label'
+  div class='controls'
+    = f.text_field :branch, :class => 'form-control input-large input-with-feedback'
+    span class='help-inline' = error ? f.error_message_on(:branch, :class => 'text-error') : pat(:example)
+- error = @project.errors.include?(:remote_url)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :remote_url, :class => 'control-label'
+  div class='controls'
+    = f.text_field :remote_url, :class => 'form-control input-large input-with-feedback'
+    span class='help-inline' = error ? f.error_message_on(:remote_url, :class => 'text-error') : pat(:example)
+- error = @project.errors.include?(:commit)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :commit, :class => 'control-label'
+  div class='controls'
+    = f.text_field :commit, :class => 'form-control input-large input-with-feedback'
+    span class='help-inline' = error ? f.error_message_on(:commit, :class => 'text-error') : pat(:example)
+
+div class="form-actions"
+  = f.submit pat(:save), :class => 'btn btn-primary'
+  |&nbsp;
+  = f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
+  |&nbsp;
+  = link_to pat(:cancel), url(:projects, :index), :class => 'btn btn-default'
