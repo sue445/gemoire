@@ -9,6 +9,8 @@ table.table.table-striped
       th commit
       th created_at
       th updated_at
+      th
+      th
   tbody
     - @projects.each do |project|
       tr
@@ -18,3 +20,11 @@ table.table.table-striped
         td = project.commit
         td = project.created_at
         td = project.updated_at
+        td
+          = form_tag url(:projects, :update_async, id: project.id)
+            button.btn.btn-default
+              = glyphicon("refresh")
+        td
+          = link_to project_doc_path(project)
+            button.btn.btn-info
+              = glyphicon("book")

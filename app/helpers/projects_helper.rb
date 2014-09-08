@@ -3,9 +3,9 @@
 module Gemoire
   class App
     module ProjectsHelper
-      # def simple_helper_method
-      # ...
-      # end
+      def project_doc_path(project)
+        "/doc/#{project.name}/#{project.branch}/index.html"
+      end
     end
 
     helpers ProjectsHelper

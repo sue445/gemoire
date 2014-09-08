@@ -17,8 +17,12 @@
 
 class Project < ActiveRecord::Base
   validates_presence_of :name, :branch, :remote_url
+  validates_format_of :name  , with: /[a-zA-Z.0-9_\-]+/
+  validates_format_of :branch, with: /[a-zA-Z.0-9_\-]+/
 
   after_save :update_async
+
+  after_destroy :remove_dirs
 
   def pull_remote
     if repository_dir.exist?
@@ -40,6 +44,11 @@ class Project < ActiveRecord::Base
       "--no-stats",
       "--quiet"
     )
+  end
+
+  def update_async
+    pull_remote
+    generate_doc
   end
 
   private
@@ -72,13 +81,14 @@ class Project < ActiveRecord::Base
     git.reset_hard("origin/#{branch}")
   end
 
-  def update_async
-    pull_remote
-  end
-
   def absolute_path(path)
     dir = Pathname(path)
     dir = Pathname(Padrino.root(path)) if dir.relative?
     dir
+  end
+
+  def remove_dirs
+    repository_dir.rmtree
+    doc_dir.rmtree
   end
 end
