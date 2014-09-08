@@ -14,7 +14,6 @@ gem 'global'
 gem 'rake'
 gem 'sass'
 gem 'slim'
-gem 'sqlite3'
 gem 'unicorn-padrino'
 gem 'yard'
 
@@ -30,4 +29,10 @@ end
 group :development do
   gem 'pry'    , group: :test
   gem 'pry-nav', group: :test
+  gem 'sqlite3', group: :test
 end
+
+group :production do
+  gem 'pg', group: :postgres
+end
+

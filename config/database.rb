@@ -1,4 +1,18 @@
-ActiveRecord::Base.configurations = YAML.load_file(Padrino.root('config', 'database.yml')).with_indifferent_access
+ActiveRecord::Base.configurations = YAML.load(ERB.new(File.read(Padrino.root('config', 'database.yml'))).result).with_indifferent_access
+
+# for wercker
+if ENV['WERCKER_POSTGRESQL_DATABASE']
+  ActiveRecord::Base.configurations[:test] = {
+    adapter:       'postgresql',
+    encoding:      'utf8',
+    database:      "#{ENV['WERCKER_POSTGRESQL_DATABASE']}#{ ENV['TEST_ENV_NUMBER']}",
+    username:      ENV['WERCKER_POSTGRESQL_USERNAME'],
+    password:      ENV['WERCKER_POSTGRESQL_PASSWORD'],
+    host:          ENV['WERCKER_POSTGRESQL_HOST'],
+    post:          ENV['WERCKER_POSTGRESQL_PORT'],
+    min_messages: 'warning'
+  }
+end
 
 # Setup our logger
 ActiveRecord::Base.logger = logger

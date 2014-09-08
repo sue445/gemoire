@@ -1,1 +1,1 @@
-web: bundle exec padrino s -a unicorn -p ${PORT:="3000"} -e ${RACK_ENV:="development"}
+web: bundle exec unicorn -p $PORT -c ./config/unicorn.rb

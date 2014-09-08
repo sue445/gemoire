@@ -42,6 +42,11 @@ end
 #
 Padrino.after_load do
   Global.configure do |config|
+    unless File.exist?(Padrino.root("config/global/gemoire.yml"))
+      # for Heroku
+      FileUtils.cp(Padrino.root("config/global/gemoire.yml.example"), Padrino.root("config/global/gemoire.yml"))
+    end
+
     config.environment      = Padrino.env.to_s
     config.config_directory = Padrino.root("config/global")
   end
