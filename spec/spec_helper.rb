@@ -94,6 +94,7 @@ RSpec.configure do |config|
 =end
   config.include Rack::Test::Methods
   config.include FactoryGirl::Syntax::Methods
+  config.include RSpec::Padrino
 
   # database_cleaner
   config.before(:suite) do
@@ -127,6 +128,10 @@ def app(app = nil, &blk)
   @app ||= Padrino.application
 end
 
+app Gemoire::App do
+  disable :protect_from_csrf
+end
+
 def spec_dir
   Pathname(__dir__)
 end
@@ -134,3 +139,8 @@ end
 def dummy_dir
   spec_dir.join("dummy")
 end
+
+def assigns(name)
+  last_application.assigns(name)
+end
+

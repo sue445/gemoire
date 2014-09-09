@@ -23,6 +23,7 @@ group :test do
   gem 'faker'
   gem 'rack-test', require: 'rack/test'
   gem 'rspec', "~> 3.0.0"
+  gem 'rspec-padrino'
   gem 'rspec-temp_dir', '0.0.2'
 end
 
