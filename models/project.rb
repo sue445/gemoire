@@ -12,7 +12,7 @@
 #
 # Indexes
 #
-#  index_projects_on_name_and_branch  (name,branch) UNIQUE
+#  index_projects_on_name  (name) UNIQUE
 #
 
 class Project < ActiveRecord::Base

@@ -32,6 +32,6 @@ ActiveRecord::Schema.define(version: 20140907110242) do
     t.datetime "updated_at"
   end
 
-  add_index "projects", ["name", "branch"], name: "index_projects_on_name_and_branch", unique: true
+  add_index "projects", ["name"], name: "index_projects_on_name", unique: true
 
 end
