@@ -24,7 +24,7 @@ group :test do
   gem 'rack-test', require: 'rack/test'
   gem 'rspec', "~> 3.0.0"
   gem 'rspec-padrino'
-  gem 'rspec-temp_dir', '0.0.2'
+  gem 'rspec-temp_dir', '0.0.3'
 end
 
 group :development do

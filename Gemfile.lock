@@ -115,7 +115,7 @@ GEM
       rspec (>= 2.0)
       sinatra
     rspec-support (3.0.4)
-    rspec-temp_dir (0.0.2)
+    rspec-temp_dir (0.0.3)
       rspec
     sass (3.3.14)
     sinatra (1.4.5)
@@ -166,7 +166,7 @@ DEPENDENCIES
   rake
   rspec (~> 3.0.0)
   rspec-padrino
-  rspec-temp_dir (= 0.0.2)
+  rspec-temp_dir (= 0.0.3)
   sass
   slim
   sqlite3
