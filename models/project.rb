@@ -33,7 +33,7 @@ class Project < ActiveRecord::Base
   end
 
   def git_clone
-    Git.clone(self.remote_url, self.id.to_s, path: satellite_root_dir)
+    Git.clone(self.remote_url, self.id.to_s, path: Config.satellite_root_dir)
   end
 
   def generate_doc
@@ -61,30 +61,16 @@ class Project < ActiveRecord::Base
   end
 
   def doc_dir
-    doc_root_dir.join(self.name)
+    Config.doc_root_dir.join(self.name)
   end
 
   def repository_dir
-    satellite_root_dir.join(self.id.to_s)
-  end
-
-  def satellite_root_dir
-    absolute_path(Global.gemoire.satellite_root_dir)
-  end
-
-  def doc_root_dir
-    absolute_path(Global.gemoire.doc_root_dir)
+    Config.satellite_root_dir.join(self.id.to_s)
   end
 
   def git_fetch_and_reset
     git.fetch
     git.reset_hard("origin/#{branch}")
-  end
-
-  def absolute_path(path)
-    dir = Pathname(path)
-    dir = Pathname(Padrino.root(path)) if dir.relative?
-    dir
   end
 
   def remove_dirs

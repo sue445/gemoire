@@ -16,7 +16,7 @@ RSpec.describe Project do
     end
 
     before do
-      allow(Global.gemoire).to receive(:satellite_root_dir){ temp_dir }
+      allow(Config).to receive(:satellite_root_dir){ Pathname(temp_dir) }
     end
 
     context "When ssh url", skip_on_ci: true do
@@ -44,7 +44,7 @@ RSpec.describe Project do
     include_context "uses temp dir"
 
     before do
-      allow(Global.gemoire).to receive(:satellite_root_dir){ temp_dir }
+      allow(Config).to receive(:satellite_root_dir){ Pathname(temp_dir) }
       project.git_clone
     end
 
@@ -65,7 +65,7 @@ RSpec.describe Project do
 
     before do
       allow(project).to receive(:repository_dir){ dummy_dir }
-      allow(Global.gemoire).to receive(:doc_root_dir){ temp_dir }
+      allow(Config).to receive(:doc_root_dir){ Pathname(temp_dir) }
     end
 
     it "should generate doc" do
