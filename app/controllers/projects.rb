@@ -1,4 +1,5 @@
 Gemoire::App.controllers :projects do
+  project_params = {project: [:name, :branch, :remote_url]}
 
   # get :index, :map => '/foo/bar' do
   #   session[:foo] = 'bar'
@@ -29,7 +30,7 @@ Gemoire::App.controllers :projects do
     render :new
   end
 
-  post :create, params: [project: [:name, :branch, :remote_url]] do
+  post :create, params: [project_params] do
     @project = Project.new(params[:project])
     if @project.save
       flash[:success] = "Project was successfully created."
@@ -40,9 +41,12 @@ Gemoire::App.controllers :projects do
   end
 
   post :update_async, map: "/projects/:id/update_async" do
-    @project = Project.find(params[:id])
     @project.update_async
     redirect url(:projects, :index)
+  end
+
+  before except: [:index, :new, :create] do
+    @project = Project.find(params[:id])
   end
 
 =begin

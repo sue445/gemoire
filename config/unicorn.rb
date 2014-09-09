@@ -1,9 +1,9 @@
 # ref. http://qiita.com/items/26a03d3839ae85fb5779
 worker_processes 3
 timeout 30
+preload_app false
 
-# for NewRelic
-preload_app true
+# RACK_ENV = ENV["RACK_ENV"] || "development"
 
 before_fork do |server, worker|
   # Replace with MongoDB or whatever
@@ -24,7 +24,7 @@ end
 after_fork do |server, worker|
   # Replace with MongoDB or whatever
   if defined?(ActiveRecord::Base)
-    ActiveRecord::Base.establish_connection
+    ActiveRecord::Base.establish_connection(::Padrino.env.to_sym)
     Padrino.logger.info('Connected to ActiveRecord')
   end
 

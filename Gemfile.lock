@@ -140,8 +140,6 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    unicorn-padrino (0.0.2)
-      unicorn
     url_mount (0.2.1)
       rack
     yard (0.8.7.4)
@@ -172,5 +170,5 @@ DEPENDENCIES
   sass
   slim
   sqlite3
-  unicorn-padrino
+  unicorn
   yard

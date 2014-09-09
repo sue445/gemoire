@@ -58,7 +58,7 @@ RSpec.describe Project do
     subject{ project.generate_doc }
 
     let(:project) { create(:project, name: "dummy") }
-    let(:doc_dir) { Pathname("#{temp_dir}/#{project.name}/#{project.branch}") }
+    let(:doc_dir) { Pathname("#{temp_dir}/#{project.name}") }
     let(:doc_file){ Pathname("#{doc_dir}/index.html") }
 
     include_context "uses temp dir"

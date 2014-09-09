@@ -92,6 +92,8 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 =end
+  config.order = :random
+
   config.include Rack::Test::Methods
   config.include FactoryGirl::Syntax::Methods
   config.include RSpec::Padrino

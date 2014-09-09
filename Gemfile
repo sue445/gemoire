@@ -14,7 +14,7 @@ gem 'global'
 gem 'rake'
 gem 'sass'
 gem 'slim'
-gem 'unicorn-padrino'
+gem 'unicorn'
 gem 'yard'
 
 group :test do

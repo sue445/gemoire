@@ -61,7 +61,7 @@ class Project < ActiveRecord::Base
   end
 
   def doc_dir
-    doc_root_dir.join(self.name, self.branch)
+    doc_root_dir.join(self.name)
   end
 
   def repository_dir
