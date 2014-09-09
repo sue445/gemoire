@@ -8,6 +8,8 @@ RSpec.describe Project do
 
     include_context "uses temp dir"
 
+    let(:temp_path){ Pathname(temp_dir) }
+
     shared_examples :a_git_clone_method do
       it "should clone from repository" do
         subject
@@ -16,7 +18,7 @@ RSpec.describe Project do
     end
 
     before do
-      allow(Config).to receive(:satellite_root_dir){ Pathname(temp_dir) }
+      allow(Config).to receive(:satellite_root_dir){ temp_path }
     end
 
     context "When ssh url", skip_on_ci: true do
@@ -42,9 +44,10 @@ RSpec.describe Project do
     let(:remote_url){ "https://github.com/sue445/sample-repo.git" }
 
     include_context "uses temp dir"
+    let(:temp_path){ Pathname(temp_dir) }
 
     before do
-      allow(Config).to receive(:satellite_root_dir){ Pathname(temp_dir) }
+      allow(Config).to receive(:satellite_root_dir){ temp_path }
       project.git_clone
     end
 
@@ -62,10 +65,11 @@ RSpec.describe Project do
     let(:doc_file){ Pathname("#{doc_dir}/index.html") }
 
     include_context "uses temp dir"
+    let(:temp_path){ Pathname(temp_dir) }
 
     before do
       allow(project).to receive(:repository_dir){ dummy_dir }
-      allow(Config).to receive(:doc_root_dir){ Pathname(temp_dir) }
+      allow(Config).to receive(:doc_root_dir){ temp_path }
     end
 
     it "should generate doc" do
