@@ -40,3 +40,9 @@ build:
         - script:
             name: rspec
             code: bundle exec rspec --tag ~skip_on_ci
+deploy:
+    steps:
+        - heroku-deploy:
+            key-name: HEROKU_DEPLOY_KEY
+            run: rake ar:migrate
+            keep-repository: true
