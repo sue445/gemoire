@@ -32,6 +32,7 @@ div class="tabs-content"
         th class='header' = mat(:project, :commit)
         th class='header' = mat(:project, :created_at)
         th class='header' = mat(:project, :updated_at)
+        th class='header' = mat(:project, :repository_url)
         th class='header list-row-action-header'
 
     tbody
@@ -45,6 +46,7 @@ div class="tabs-content"
           td class='list-column' = project.commit
           td class='list-column' = time_ago_in_words project.created_at
           td class='list-column' = time_ago_in_words project.updated_at
+          td class='list-column' = project.repository_url
           td class='list-column list-row-action'
             div class='list-row-action-wrapper'
               = link_to tag_icon(:edit), :href => url(:projects, :edit, :id => project.id), :rel => :tooltip, :title => "#{pat(:edit)} project", :class => 'list-row-action-wrapper-link'
