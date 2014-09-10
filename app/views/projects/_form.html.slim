@@ -2,26 +2,34 @@
   = f.error_messages(class: "alert alert-danger", role: "alert")
 
   .form-group class=f.has_error(:name)
-    = f.label :name, class: "col-sm-2 control-label"
+    = f.label :name, class: "col-sm-2 control-label" do
+      = require_mark
     .col-sm-10
       = f.text_field :name, class: "form-control"
 
-  .form-group class=f.has_error(:remote_url)
-    = f.label :remote_url, class: "col-sm-2 control-label"
+  .form-group class=f.has_error(:repository_url)
+    = f.label :repository_url, class: "col-sm-2 control-label"
     .col-sm-10
-      = f.text_field :remote_url, class: "form-control"
+      = f.text_field :repository_url, class: "form-control", placeholder: "https://github.com/yourname/awesome-repo"
+
+  .form-group class=f.has_error(:remote_url)
+    = f.label :remote_url, class: "col-sm-2 control-label" do
+      = require_mark
+    .col-sm-10
+      = f.text_field :remote_url, class: "form-control", placeholder: "git://github.com/yourname/awesome-repo.git"
       span.help-block
         ul
-          li ex1) git://github.com/someone/awesome-repo.git
-          li ex2) https://github.com/someone/awesome-repo.git
-          li ex3) git@github.com:someone/awesome-repo.git
+          li ex1) git://github.com/yourname/awesome-repo.git
+          li ex2) https://github.com/yourname/awesome-repo.git
+          li ex3) git@github.com:yourname/awesome-repo.git
       .alert.alert-info role="alert"
         | If you want to use ssh-url, register
         strong &nbsp;#{`whoami`.chomp}'s&nbsp;
         | public key to remote repository
 
   .form-group class=f.has_error(:branch)
-    = f.label :branch, class: "col-sm-2 control-label"
+    = f.label :branch, class: "col-sm-2 control-label" do
+      = require_mark
     .col-sm-10
       = f.text_field :branch, class: "form-control"
 

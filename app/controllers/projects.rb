@@ -1,5 +1,5 @@
 Gemoire::App.controllers :projects do
-  project_params = {project: [:name, :branch, :remote_url]}
+  project_params = {project: [:name, :branch, :remote_url, :repository_url]}
 
   # get :index, :map => '/foo/bar' do
   #   session[:foo] = 'bar'
@@ -21,7 +21,7 @@ Gemoire::App.controllers :projects do
   # end
 
   get :index, map: "/" do
-    @projects = Project.all
+    @projects = Project.order(:name)
     render :index
   end
 

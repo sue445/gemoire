@@ -14,7 +14,11 @@ table.table.table-striped
   tbody
     - @projects.each do |project|
       tr
-        td = project.name
+        td
+          - if project.repository_url.present?
+            = link_to project.name, project.repository_url
+          - else
+            = project.name
         td = project.remote_url
         td = project.branch
         td = project.commit
