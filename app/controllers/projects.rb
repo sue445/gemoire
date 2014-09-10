@@ -41,7 +41,7 @@ Gemoire::App.controllers :projects do
   end
 
   post :update_async, map: "/projects/:id/update_async" do
-    @project.update_async
+    @project.update_doc_async
     redirect url(:projects, :index)
   end
 
