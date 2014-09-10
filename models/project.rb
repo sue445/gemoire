@@ -69,6 +69,10 @@ class Project < ActiveRecord::Base
     )
   end
 
+  def exist_doc?
+    doc_dir.join("index.html").exist?
+  end
+
   private
   def git
     @git ||= Git.open(repository_dir, log: git_logger, repository: repository_dir.join(".git"))

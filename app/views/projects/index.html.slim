@@ -29,6 +29,10 @@ table.table.table-striped
             button.btn.btn-default
               = glyphicon("refresh")
         td
-          = link_to project_doc_path(project)
-            button.btn.btn-info
+          - if project.exist_doc?
+            = link_to project_doc_path(project)
+              button.btn.btn-info
+                = glyphicon("book")
+          - else
+            button.btn.btn-info disabled="disabled"
               = glyphicon("book")
