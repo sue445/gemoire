@@ -20,8 +20,7 @@ class Project < ActiveRecord::Base
   validates_format_of :name  , with: /[a-zA-Z.0-9_\-]+/
   validates_format_of :branch, with: /[a-zA-Z.0-9_\-]+/
 
-  after_save :update_async
-
+  after_save    :update_async
   after_destroy :remove_dirs
 
   def pull_remote
@@ -37,16 +36,19 @@ class Project < ActiveRecord::Base
   end
 
   def generate_doc
-    YARD::CLI::Yardoc.run(
-      repository_dir.to_s,
-      "--output-dir=#{doc_dir}",
-      "--db=#{repository_dir}/.yardoc",
-      "--no-stats",
-      "--quiet"
-    )
+    Dir.chdir(repository_dir) do
+      YARD::CLI::Yardoc.run(
+        "--output-dir=#{doc_dir}",
+        "--db=.yardoc",
+        "--no-stats",
+        "--quiet",
+        "--yardopts=.yardopts"
+      )
+    end
   end
 
   def update_async
+    # TODO sidekiq
     pull_remote
     generate_doc
   end

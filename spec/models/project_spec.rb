@@ -4,7 +4,7 @@ RSpec.describe Project do
 
     let(:project)    { create(:project, name: "sample-repo", remote_url: remote_url) }
     let(:cloned_repo){ Pathname("#{temp_dir}/#{project.id}") }
-    let(:cloned_file){ Pathname("#{cloned_repo}/README.md") }
+    let(:cloned_file){ Pathname("#{cloned_repo}/test.txt") }
 
     include_context "uses temp dir"
 
@@ -70,8 +70,13 @@ RSpec.describe Project do
 
     it "should generate doc" do
       subject
-      expect(doc_dir).to be_exist
       expect(doc_file).to be_exist
+    end
+
+    it "should generate target repo's document" do
+      subject
+      expect(doc_file.read).to include "dummy"
+      expect(doc_file.read).not_to include "gemoire"
     end
   end
 end
