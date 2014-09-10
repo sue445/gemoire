@@ -35,7 +35,7 @@ build:
             code: |
                 cp config/global/gemoire.yml{.example,}
                 cp config/database.yml{.sqlite3,}
-                RACK_ENV=test bundle exec rake ar:migrate
+                RACK_ENV=test bundle exec rake ar:migrate:reset
 
         - script:
             name: rspec
