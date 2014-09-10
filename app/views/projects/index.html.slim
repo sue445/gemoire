@@ -21,7 +21,7 @@ table.table.table-striped
             = project.name
         td = project.remote_url
         td = project.branch
-        td = project.commit
+        td = short_sha1(project)
         td = project.created_at
         td = project.updated_at
         td
