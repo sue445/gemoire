@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140907110242) do
+ActiveRecord::Schema.define(version: 20140910134112) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -24,12 +24,13 @@ ActiveRecord::Schema.define(version: 20140907110242) do
   end
 
   create_table "projects", force: true do |t|
-    t.string   "name",                          null: false
-    t.string   "branch",     default: "master", null: false
-    t.string   "remote_url",                    null: false
+    t.string   "name",                              null: false
+    t.string   "branch",         default: "master", null: false
+    t.string   "remote_url",                        null: false
     t.string   "commit"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "repository_url"
   end
 
   add_index "projects", ["name"], name: "index_projects_on_name", unique: true

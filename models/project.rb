@@ -2,13 +2,14 @@
 #
 # Table name: projects
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)      not null
-#  branch     :string(255)      default("master"), not null
-#  remote_url :string(255)      not null
-#  commit     :string(255)
-#  created_at :datetime
-#  updated_at :datetime
+#  id             :integer          not null, primary key
+#  name           :string(255)      not null
+#  branch         :string(255)      default("master"), not null
+#  remote_url     :string(255)      not null
+#  commit         :string(255)
+#  created_at     :datetime
+#  updated_at     :datetime
+#  repository_url :string(255)
 #
 # Indexes
 #
