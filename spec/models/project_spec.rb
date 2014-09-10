@@ -54,6 +54,21 @@ RSpec.describe Project do
     end
   end
 
+  describe "git_rev_parse" do
+    subject{ project.git_rev_parse }
+
+    let(:project) { create(:project, name: "sample-repo", remote_url: "https://github.com/sue445/sample-repo.git") }
+
+    include_context "uses temp dir"
+
+    before do
+      allow(Config).to receive(:satellite_root_dir){ temp_dir_path }
+      project.git_clone
+    end
+
+    it{ should match /^[0-9a-z]{40}$/ }
+  end
+
   describe "#generate_doc" do
     subject{ project.generate_doc }
 

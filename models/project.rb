@@ -37,6 +37,10 @@ class Project < ActiveRecord::Base
     Git.clone(self.remote_url, self.id.to_s, path: Config.satellite_root_dir)
   end
 
+  def git_rev_parse
+    git.object("HEAD").sha
+  end
+
   def generate_doc
     Dir.chdir(repository_dir) do
       YARD::CLI::Yardoc.run(
@@ -57,6 +61,12 @@ class Project < ActiveRecord::Base
   def update_doc
     pull_remote
     generate_doc
+
+    # update_doc is called in after_save callback
+    self.update_columns(
+      commit:     self.git_rev_parse,
+      updated_at: Time.current
+    )
   end
 
   private
