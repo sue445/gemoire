@@ -4,7 +4,7 @@ module Gemoire
   class App
     module ProjectsHelper
       def project_doc_path(project)
-        "/doc/#{project.name}/#{project.branch}/index.html"
+        File.join(Global.gemoire.doc_path, project.name, "index.html")
       end
     end
 
