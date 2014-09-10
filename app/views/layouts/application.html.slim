@@ -4,7 +4,7 @@ html
     meta http-equiv="X-UA-Compatible" content="IE=edge"
     meta name="viewport" content="width=device-width, initial-scale=1"
     title= [@title, "Gemoire"].compact.join(" | ")
-    = stylesheet_link_tag 'bootstrap.min', 'application'
+    = stylesheet_link_tag 'bootstrap.min', 'application', '/octicons/octicons.css'
     = javascript_include_tag 'jquery', 'jquery-ujs', 'bootstrap.min'
     = yield_content :include
 
@@ -19,7 +19,7 @@ html
           span.icon-bar
           span.icon-bar
         a.navbar-brand href="/"
-          | Gemoire
+          = octicon("book", title: "Gemoire", size: :mega)
         .nav-collapse.collapse.in.navbar-responsive-collapse
           ul.nav.navbar-nav.pull-right.menubar-right
             li

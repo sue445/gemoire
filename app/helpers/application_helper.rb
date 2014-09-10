@@ -3,8 +3,25 @@
 module Gemoire
   class App
     module ApplicationHelper
-      def glyphicon(name)
-        content_tag(:span, "", class: "glyphicon glyphicon-#{name}")
+      def glyphicon(name, title: "")
+        content_tag(:span, title, class: "glyphicon glyphicon-#{name}")
+      end
+
+      def octicon(name, title: "", size: :normal)
+        base_class =
+          case size
+          when :normal
+            "octicon"
+          when :mega
+            "mega-octicon"
+          when :more_mega
+            "mega-octicon more-mega"
+          when :really_more_mega
+            "mega-octicon really-more-mega"
+          else
+            "octicon"
+          end
+        content_tag(:span, title, class: "#{base_class} octicon-#{name}")
       end
     end
 
