@@ -38,7 +38,14 @@ RSpec.describe "ProjectsController" do
 
       it{ expect(last_response).not_to be_redirect }
     end
+  end
 
+  describe "POST /projects/:id/create" do
+    subject!{ post "/projects/#{project.id}/update_doc"}
+
+    let(:project){ create(:project) }
+
+    it{ expect(last_response).to be_redirect }
   end
 
 =begin

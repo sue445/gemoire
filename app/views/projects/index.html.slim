@@ -25,7 +25,7 @@ table.table.table-striped
         td = project.created_at
         td = project.updated_at
         td
-          = form_tag url(:projects, :update_async, id: project.id)
+          = form_tag url(:projects, :update_doc, id: project.id)
             button.btn.btn-default
               = glyphicon("refresh")
         td
