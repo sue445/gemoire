@@ -1,0 +1,6 @@
+{
+  "name": "Gemoire",
+  "description": "Hosting YARD doc",
+  "repository": "https://github.com/sue445/gemoire",
+  "keywords": ["ruby", "padrino", "yard"]
+}
