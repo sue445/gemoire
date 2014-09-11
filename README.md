@@ -2,6 +2,9 @@
 
 [![Circle CI](https://circleci.com/gh/sue445/gemoire/tree/master.png?style=badge)](https://circleci.com/gh/sue445/gemoire/tree/master)
 
+
+[![Stories in Ready](https://badge.waffle.io/sue445/gemoire.svg?label=ready&title=Ready)](http://waffle.io/sue445/gemoire)
+
 ## Requirements
 * Ruby 2.1.2
 * git 1.6+
