@@ -46,27 +46,21 @@ Gemoire::App.controllers :projects do
   end
 
   get :edit, with: :id do
-    if @project
-      render :edit
-    else
-      flash[:warning] = "Not Found"
-      halt 404
-    end
+    render :edit
   end
 
   put :update, with: :id do
-    if @project
-      if @project.update_attributes(params[:project])
-        flash[:success] = "Update success"
-        redirect url(:projects, :index)
-      else
-        flash.now[:error] = "Update failed"
-        render :edit
-      end
+    if @project.update_attributes(params[:project])
+      flash[:success] = "Update success"
+      redirect url(:projects, :index)
     else
-      flash[:warning] = "Not Found"
-      halt 404
+      flash.now[:error] = "Update failed"
+      render :edit
     end
+  end
+
+  get :show, with: :id do
+    render :show
   end
 
   before except: [:index, :new, :create] do

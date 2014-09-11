@@ -37,9 +37,13 @@ module Gemoire
       role.project_module :accounts, '/accounts'
     end
 
-    # Custom error management 
+    # Custom error management
     error(403) { @title = "Error 403"; render('errors/403', :layout => :error) }
     error(404) { @title = "Error 404"; render('errors/404', :layout => :error) }
     error(500) { @title = "Error 500"; render('errors/500', :layout => :error) }
+
+    error ActiveRecord::RecordNotFound do
+      halt 404
+    end
   end
 end
