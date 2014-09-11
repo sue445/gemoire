@@ -6,6 +6,7 @@ machine:
 ## Customize dependencies
 dependencies:
   pre:
+    - export CODECLIMATE_REPO_TOKEN=38d34b549aa5f497773fa59be275e89b798631012dec08f21f0a9ca1c5cdffb9
     - cp config/global/gemoire.yml{.example,}
 
 ## Customize database setup

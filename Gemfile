@@ -18,6 +18,7 @@ gem 'unicorn'
 gem 'yard'
 
 group :test do
+  gem "codeclimate-test-reporter", require: nil
   gem 'coveralls', require: false
   gem 'database_cleaner'
   gem 'factory_girl'
