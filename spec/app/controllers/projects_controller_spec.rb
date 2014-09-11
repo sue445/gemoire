@@ -40,8 +40,8 @@ RSpec.describe "ProjectsController" do
     end
   end
 
-  describe "POST /projects/:id/create" do
-    subject!{ post "/projects/#{project.id}/update_doc"}
+  describe "POST /projects/update_doc/:id" do
+    subject!{ post "/projects/update_doc/#{project.id}"}
 
     let(:project){ create(:project) }
 
