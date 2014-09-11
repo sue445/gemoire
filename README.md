@@ -41,3 +41,6 @@ bundle exec foreman start
 RACK_ENV=test bundle exec rake ar:migrate
 bundle exec rspec
 ```
+
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/sue445/gemoire)
