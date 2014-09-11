@@ -3,10 +3,14 @@ machine:
   ruby:
     version: 2.1.2
 
+  # Add some environment variables
+  environment:
+    CODECLIMATE_REPO_TOKEN: 38d34b549aa5f497773fa59be275e89b798631012dec08f21f0a9ca1c5cdffb9
+    DATABASE_URL: postgres://ubuntu:@127.0.0.1:5432/circle_test
+
 ## Customize dependencies
 dependencies:
   pre:
-    - export CODECLIMATE_REPO_TOKEN=38d34b549aa5f497773fa59be275e89b798631012dec08f21f0a9ca1c5cdffb9
     - cp config/global/gemoire.yml{.example,}
 
 ## Customize database setup
