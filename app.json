@@ -1,7 +1,6 @@
 {
   "name": "Gemoire",
   "description": "Hosting YARD doc",
-  "repository": "https://github.com/sue445/gemoire",
   "keywords": ["ruby", "padrino", "yard"],
   "scripts": {
     "postdeploy": "bundle exec rake ar:create ar:migrate"
