@@ -1,6 +1,6 @@
 # Gemoire
 
-[![wercker status](https://app.wercker.com/status/77a69cca299dd5e4b69c2c972beadcda/m "wercker status")](https://app.wercker.com/project/bykey/77a69cca299dd5e4b69c2c972beadcda)
+[![Circle CI](https://circleci.com/gh/sue445/gemoire/tree/master.png?style=badge)](https://circleci.com/gh/sue445/gemoire/tree/master)
 
 ## Requirements
 * Ruby 2.1.2
