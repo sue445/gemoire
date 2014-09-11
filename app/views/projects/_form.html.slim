@@ -1,4 +1,4 @@
-= form_for @project, url_for(:projects, :create), class: "form-horizontal", role: "form" do |f|
+= form_for @project, action, method: method, class: "form-horizontal", role: "form" do |f|
   = f.error_messages(class: "alert alert-danger", role: "alert")
 
   .form-group class=f.has_error(:name)
@@ -34,5 +34,7 @@
       = f.text_field :branch, class: "form-control"
 
   .form-group
-    .col-sm-offset-2.col-sm-10
-      = f.submit_block "Add Project", class: 'btn btn-primary'
+    .col-sm-offset-2.col-sm-1
+      = f.submit_block "Send", class: 'btn btn-primary'
+    .col-sm-9
+      = link_to "Cancel", url(:projects, :index), class: 'btn btn-default'

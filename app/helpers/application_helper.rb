@@ -27,6 +27,10 @@ module Gemoire
       def require_mark
         content_tag(:span, "require", class: "label label-danger")
       end
+
+      def datetime_to_s(datetime, format = :default)
+        I18n.l(datetime.in_time_zone, format: "%Y/%m/%d %H:%M:%S %z")
+      end
     end
 
     helpers ApplicationHelper

@@ -11,28 +11,33 @@ table.table.table-striped
       th updated_at
       th
       th
+      th
   tbody
     - @projects.each do |project|
       tr
         td
+          = project.name
           - if project.repository_url.present?
-            = link_to project.name, project.repository_url
-          - else
-            = project.name
+            =< link_to project.repository_url do
+              = octicon("repo")
         td = project.remote_url
         td = project.branch
         td = short_sha1(project)
-        td = project.created_at
-        td = project.updated_at
+        td = datetime_to_s(project.created_at)
+        td = datetime_to_s(project.updated_at)
         td
           = form_tag url(:projects, :update_doc, id: project.id)
             button.btn.btn-default
-              = glyphicon("refresh")
+              = octicon("sync")
+        td
+          = link_to url(:projects, :edit, id: project.id) do
+            button.btn.btn-default
+              = glyphicon("pencil")
         td
           - if project.exist_doc?
             = link_to project_doc_path(project)
               button.btn.btn-info
-                = glyphicon("book")
+                = octicon("file-text")
           - else
-            button.btn.btn-info disabled="disabled"
-              = glyphicon("book")
+            button.btn disabled="disabled"
+              = octicon("file-text")
