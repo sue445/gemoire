@@ -1,5 +1,8 @@
 require 'coveralls'
-Coveralls.wear!
+
+Coveralls.wear! do
+  add_filter 'app/admin'
+end
 
 require "codeclimate-test-reporter"
 CodeClimate::TestReporter.start

@@ -28,11 +28,11 @@
 Padrino.configure_apps do
   # enable :sessions
   set :session_secret, 'bea2ab40d69fc76d1178f571380ecc78668d281c642eda79c0f8476265fa3d6b'
-  set :protection, :except => :path_traversal
+  set :protection, except: :path_traversal
   set :protect_from_csrf, true
 end
 
 # Mounts the core application for this project
 
-Padrino.mount("Gemoire::Admin", :app_file => Padrino.root('admin/app.rb')).to("/admin") unless Padrino.env == :test
-Padrino.mount('Gemoire::App', :app_file => Padrino.root('app/app.rb')).to('/')
+Padrino.mount("Gemoire::Admin", app_file: Padrino.root('admin/app.rb')).to("/admin")
+Padrino.mount('Gemoire::App', app_file: Padrino.root('app/app.rb')).to('/')
