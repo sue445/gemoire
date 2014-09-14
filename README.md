@@ -7,6 +7,8 @@
 
 [![Stories in Ready](https://badge.waffle.io/sue445/gemoire.svg?label=ready&title=Ready)](http://waffle.io/sue445/gemoire)
 
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
 ## Requirements
 * Ruby 2.1.2
 * git 1.6+
@@ -41,6 +43,3 @@ bundle exec foreman start
 RACK_ENV=test bundle exec rake ar:migrate
 bundle exec rspec
 ```
-
-
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
