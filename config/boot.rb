@@ -41,40 +41,6 @@ end
 # Add your after (RE)load hooks here
 #
 Padrino.after_load do
-  Global.configure do |config|
-    unless File.exist?(Padrino.root("config/global/gemoire.yml"))
-      # for Heroku
-      FileUtils.cp(Padrino.root("config/global/gemoire.yml.example"), Padrino.root("config/global/gemoire.yml"))
-    end
-
-    config.environment      = Padrino.env.to_s
-    config.config_directory = Padrino.root("config/global")
-  end
-
-  FileUtils.mkdir_p(Global.gemoire.satellite_root_dir)
-  FileUtils.mkdir_p(Global.gemoire.doc_root_dir)
-  Time.zone = Global.gemoire.time_zone
-
-  require "sidekiq"
-  SIDEKIQ_NAMESPACE = "gemoire"
-  if ENV["REDISCLOUD_URL"]
-    # heroku
-    server_url = client_url = ENV["REDISCLOUD_URL"]
-  else
-    server_url = Global.sidekiq.server_url
-    client_url = Global.sidekiq.client_url
-  end
-  Sidekiq.configure_server do |config|
-    config.redis = {url: server_url, namespace: SIDEKIQ_NAMESPACE}
-  end
-
-  Sidekiq.configure_client do |config|
-    config.redis = {url: client_url, namespace: SIDEKIQ_NAMESPACE}
-  end
-
-  Sidekiq.redis do |conn|
-    conn.ping
-  end
 end
 
 Padrino.load!

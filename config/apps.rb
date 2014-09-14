@@ -30,6 +30,20 @@ Padrino.configure_apps do
   set :session_secret, 'bea2ab40d69fc76d1178f571380ecc78668d281c642eda79c0f8476265fa3d6b'
   set :protection, except: :path_traversal
   set :protect_from_csrf, true
+
+  Global.configure do |config|
+    unless File.exist?(Padrino.root("config/global/gemoire.yml"))
+      # for Heroku
+      FileUtils.cp(Padrino.root("config/global/gemoire.yml.example"), Padrino.root("config/global/gemoire.yml"))
+    end
+
+    config.environment      = Padrino.env.to_s
+    config.config_directory = Padrino.root("config/global")
+  end
+
+  FileUtils.mkdir_p(Global.gemoire.satellite_root_dir)
+  FileUtils.mkdir_p(Global.gemoire.doc_root_dir)
+  Time.zone = Global.gemoire.time_zone
 end
 
 # Mounts the core application for this project
