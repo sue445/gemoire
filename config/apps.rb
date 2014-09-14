@@ -37,5 +37,5 @@ end
 Padrino.mount("Gemoire::Admin", app_file: Padrino.root('admin/app.rb')).to("/admin")
 Padrino.mount('Gemoire::App', app_file: Padrino.root('app/app.rb')).to('/')
 
-require 'sidekiq/web'
-Padrino.mount('Sidekiq::Web', app_class: 'Sidekiq::Web', app_root: Sidekiq::Web.root).to('/admin/sidekiq')
+# require 'sidekiq/web'
+# Padrino.mount('Sidekiq::Web', app_class: 'Sidekiq::Web', app_root: Sidekiq::Web.root).to('/admin/sidekiq')
