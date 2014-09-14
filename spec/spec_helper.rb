@@ -1,6 +1,8 @@
+require 'simplecov'
 require 'coveralls'
 
-Coveralls.wear! do
+SimpleCov.formatter = Coveralls::SimpleCov::Formatter
+SimpleCov.start do
   add_filter 'app/admin'
 end
 
