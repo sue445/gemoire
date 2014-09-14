@@ -11,9 +11,12 @@ gem 'bcrypt'
 gem 'foreman'
 gem 'git'
 gem 'global'
+gem 'mysql2', group: :mysql
+gem 'pg', group: :postgres
 gem 'rake'
 gem 'sass'
 gem 'slim'
+gem 'sqlite3', group: :sqlite3
 gem 'unicorn'
 gem 'yard'
 
@@ -32,10 +35,4 @@ end
 group :development do
   gem 'pry'    , group: :test
   gem 'pry-nav', group: :test
-  gem 'sqlite3', group: :test
 end
-
-group :production do
-  gem 'pg', group: :postgres
-end
-

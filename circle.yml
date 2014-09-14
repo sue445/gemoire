@@ -7,24 +7,26 @@ machine:
   environment:
     CODECLIMATE_REPO_TOKEN: 38d34b549aa5f497773fa59be275e89b798631012dec08f21f0a9ca1c5cdffb9
     COVERALLS_REPO_TOKEN: RuKfM9BdUaOqw9wS99oePc8TNtsQFAiie
-    DATABASE_URL: postgres://ubuntu:@127.0.0.1:5432/circle_test
 
 ## Customize dependencies
 dependencies:
   pre:
-    - cp config/global/gemoire.yml{.example,}
+    # - cp config/global/gemoire.yml{.example,}
 
 ## Customize database setup
 database:
   override:
     # replace CircleCI's generated database.yml
-    - cp config/database.yml{.sqlite3,}
-    - RACK_ENV=test bundle exec rake ar:migrate:reset
+    # - cp config/database.yml{.sqlite3,}
+    # - RACK_ENV=test bundle exec rake ar:migrate:reset
+    - echo "do nothing"
 
 ## Customize test commands
 test:
   override:
-    - bundle exec rspec --tag ~skip_on_ci
+    - DATABASE=sqlite3 ./script/circle_ci/build.sh
+    - DATABASE=mysql ./script/circle_ci/build.sh
+    - DATABASE=postgresql ./script/circle_ci/build.sh
 
 ## Customize deployment commands
 deployment:
