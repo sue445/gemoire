@@ -41,6 +41,7 @@ end
 # Add your after (RE)load hooks here
 #
 Padrino.after_load do
+  ActiveRecord::Base.send(:include, Sidekiq::Extensions::ActiveRecord)
 end
 
 Padrino.load!

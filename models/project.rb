@@ -54,8 +54,7 @@ class Project < ActiveRecord::Base
   end
 
   def update_doc_async
-    # TODO sidekiq
-    update_doc
+    self.delay.update_doc
   end
 
   def update_doc
