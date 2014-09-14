@@ -54,7 +54,7 @@ class Project < ActiveRecord::Base
   end
 
   def update_doc_async
-    self.delay.update_doc
+    delay.update_doc
   end
 
   def update_doc

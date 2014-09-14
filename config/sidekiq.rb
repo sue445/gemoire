@@ -6,7 +6,6 @@ Padrino.mounted_apps.each do |app|
   app.app_obj.setup_application!
 end
 
-
 SIDEKIQ_NAMESPACE = "gemoire"
 
 Padrino.after_load do
@@ -19,11 +18,11 @@ Padrino.after_load do
     client_url = Global.redis.client_url
   end
   Sidekiq.configure_server do |config|
-    config.redis = {url: server_url, namespace: SIDEKIQ_NAMESPACE}
+    config.redis = { url: server_url, namespace: SIDEKIQ_NAMESPACE }
   end
 
   Sidekiq.configure_client do |config|
-    config.redis = {url: client_url, namespace: SIDEKIQ_NAMESPACE}
+    config.redis = { url: client_url, namespace: SIDEKIQ_NAMESPACE }
   end
 
   Sidekiq.redis do |conn|
