@@ -5,5 +5,8 @@ class Sidekiq::Web < ::Sinatra::Base
     def dependencies; []; end
     def setup_application!; end
     def reload!; end
+    def app_name
+      "Sidekiq Monitor"
+    end
   end
 end
