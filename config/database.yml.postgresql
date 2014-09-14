@@ -17,7 +17,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: gitpeach_development
+  database: gemoire_development
   pool: 5
   username: root
   # password: root
@@ -46,7 +46,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: gitpeach_test
+  database: gemoire_test
   pool: 5
   # username: root
   # password: root
@@ -54,7 +54,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: gitpeach_production
+  database: gemoire_production
   pool: 5
-  username: momozono
-  password: love
+  # username: root
+  # password: root

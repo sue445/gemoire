@@ -24,7 +24,9 @@ database:
 ## Customize test commands
 test:
   override:
-    - bundle exec rspec --tag ~skip_on_ci
+    - DATABASE=sqlite3 ./script/circle_ci/build.sh
+    - DATABASE=mysql ./script/circle_ci/build.sh
+    - DATABASE=postgresql ./script/circle_ci/build.sh
 
 ## Customize deployment commands
 deployment:
