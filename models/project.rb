@@ -13,7 +13,8 @@
 #
 # Indexes
 #
-#  index_projects_on_name  (name) UNIQUE
+#  index_projects_on_name        (name) UNIQUE
+#  index_projects_on_remote_url  (remote_url)
 #
 
 class Project < ActiveRecord::Base

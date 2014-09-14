@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140910134112) do
+ActiveRecord::Schema.define(version: 20140914153812) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -34,5 +34,6 @@ ActiveRecord::Schema.define(version: 20140910134112) do
   end
 
   add_index "projects", ["name"], name: "index_projects_on_name", unique: true
+  add_index "projects", ["remote_url"], name: "index_projects_on_remote_url"
 
 end
