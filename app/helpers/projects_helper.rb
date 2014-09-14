@@ -10,6 +10,17 @@ module Gemoire
       def short_sha1(project)
         project.commit[0, 7] if project.commit.present?
       end
+
+      def repository_icon(project)
+        case project.repository_url
+        when /github\.com/
+          octicon("octoface")
+        when /bitbucket\.org/
+          fa("bitbucket")
+        else
+          octicon("repo")
+        end
+      end
     end
 
     helpers ProjectsHelper

@@ -24,6 +24,10 @@ module Gemoire
         content_tag(:span, title, class: "#{base_class} octicon-#{name}")
       end
 
+      def fa(name, title: "")
+        content_tag(:i, title, class: "fa fa-#{name}")
+      end
+
       def require_mark
         content_tag(:span, "require", class: "label label-danger")
       end
