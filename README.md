@@ -11,7 +11,9 @@
 
 ## Requirements
 * Ruby 2.1.2
+* some DBs: MySQL, PostgreSQL or sqlite3
 * git 1.6+
+* redis
 
 ## Setup
 ```bash
@@ -34,6 +36,7 @@ bundle exec padrino rake ar:migrate
 ## Run development
 ```bash
 bundle exec padrino start
+bundle exec sidekiq -r ./config/sidekiq.rb
 # or
 bundle exec foreman start
 ```
