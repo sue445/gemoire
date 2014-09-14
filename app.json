@@ -4,5 +4,11 @@
   "keywords": ["ruby", "padrino", "yard"],
   "scripts": {
     "postdeploy": "bundle exec rake ar:create ar:migrate"
+  },
+  "env": {
+    "BUNDLE_WITHOUT": {
+      "description": "bundle install --without <these>",
+      "value": "test:development:sqlite3:mysql"
+    }
   }
 }
