@@ -47,38 +47,4 @@ RSpec.describe "ProjectsController" do
 
     it{ expect(last_response).to be_redirect }
   end
-
-=begin
-  let(:params){
-    {
-      series: "Precure AllStars NewStage",
-      girl: {
-        id:           1,
-        human_name:   "Ayumi Sakgami",
-        precure_name: "Cure Ecco",
-        created_at:   "2014-09-10",
-      }
-    }
-  }
-
-  it "/projects/create1" do
-    post "/projects/create1", params
-    expect(last_response.body).to eq '{"series":"Precure AllStars NewStage","girl":{"id":"1","human_name":"Ayumi Sakgami","precure_name":"Cure Ecco","created_at":"2014-09-10"}}'
-  end
-
-  it "/projects/create2" do
-    post "/projects/create2", params
-    expect(last_response.body).to eq '{"girl":{"id":"1","human_name":"Ayumi Sakgami","precure_name":"Cure Ecco","created_at":"2014-09-10"}}'
-  end
-
-  it "/projects/create3" do
-    post "/projects/create3", params
-    expect(last_response.body).to eq '{"girl":{"human_name":"Ayumi Sakgami","precure_name":"Cure Ecco"}}'
-  end
-
-  it "/projects/create4" do
-    post "/projects/create4", params
-    expect(last_response.body).to eq '{"girl":{"human_name":"Ayumi Sakgami","precure_name":"Cure Ecco"}}'
-  end
-=end
 end

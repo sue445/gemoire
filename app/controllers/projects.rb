@@ -67,26 +67,4 @@ Gemoire::App.controllers :projects do
   before except: [:index, :new, :create] do
     @project = Project.find(params[:id])
   end
-
-=begin
-  post :create1 do
-    puts params.to_json
-    params.to_json
-  end
-
-  post :create2, params: [:girl] do
-    puts params.to_json
-    params.to_json
-  end
-
-  post :create3, params: [girl: [:human_name, :precure_name]] do
-    puts params.to_json
-    params.to_json
-  end
-
-  post :create4, params: {girl: [:human_name, :precure_name]} do
-    puts params.to_json
-    params.to_json
-  end
-=end
 end
