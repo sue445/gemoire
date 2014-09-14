@@ -1,5 +1,6 @@
 Gemoire::App.controllers :webhook do
-  
+  disable :protect_from_csrf
+
   # get :index, :map => '/foo/bar' do
   #   session[:foo] = 'bar'
   #   render 'index'
@@ -18,9 +19,14 @@ Gemoire::App.controllers :webhook do
   # get '/example' do
   #   'Hello world!'
   # end
-  
-  post :index do
 
+  post :index do
+    @projects = Project.where(remote_url: @payload[:remote_url], branch: @payload[:branch])
+    halt 404 if @projects.empty?
+
+    @projects.map(&:update_doc_async)
+
+    @projects.to_json
   end
 
   post :github do
@@ -33,6 +39,10 @@ Gemoire::App.controllers :webhook do
 
   post :gitlab do
 
+  end
+
+  before do
+    @payload = JSON.parse(request.body.read).with_indifferent_access
   end
 
 end

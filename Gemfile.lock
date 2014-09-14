@@ -18,6 +18,7 @@ GEM
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
     arel (5.0.1.20140414130214)
+    awesome_print (1.2.0)
     bcrypt (3.1.7)
     builder (3.2.2)
     celluloid (0.15.2)
@@ -128,6 +129,9 @@ GEM
     rspec-expectations (3.1.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.1.0)
+    rspec-json_matcher (0.1.5)
+      awesome_print
+      json
     rspec-mocks (3.1.0)
       rspec-support (~> 3.1.0)
     rspec-padrino (0.2.0)
@@ -204,6 +208,7 @@ DEPENDENCIES
   rack-test
   rake
   rspec (~> 3.1.0)
+  rspec-json_matcher
   rspec-padrino
   rspec-temp_dir (= 0.0.3)
   sass (~> 3.4.4)

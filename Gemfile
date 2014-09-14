@@ -33,6 +33,7 @@ group :test do
   gem 'faker'
   gem 'rack-test', require: 'rack/test'
   gem 'rspec', "~> 3.1.0"
+  gem 'rspec-json_matcher'
   gem 'rspec-padrino'
   gem 'rspec-temp_dir', '0.0.3'
 end

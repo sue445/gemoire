@@ -1,13 +1,25 @@
-require 'spec_helper'
-
 RSpec.describe "WebhookController" do
-  pending "add some examples to #{__FILE__}" do
-    before do
-      get "/"
+  describe "POST /webhook" do
+    let!(:project){ create(:project) }
+
+    subject!{ post "/webhook", payload }
+
+    let(:payload){ { remote_url: remote_url, branch: branch}.to_json }
+
+    context "with valid params" do
+      let(:remote_url){ project.remote_url }
+      let(:branch)    { project.branch }
+
+      it{ expect(last_response).to be_ok }
+      it{ expect(last_response.body).to be_json }
+      it{ expect(assigns(:projects).count).to eq 1 }
     end
 
-    it "returns hello world" do
-      expect(last_response.body).to eq "Hello World"
+    context "with invalid params" do
+      let(:remote_url){ "git@github.com:dummy/invalid.git" }
+      let(:branch)    { "master" }
+
+      it{ expect(last_response).to be_not_found }
     end
   end
 end
