@@ -11,12 +11,16 @@
 
 ## Requirements
 * Ruby 2.1.2
+* some DBs: MySQL, PostgreSQL or sqlite3
 * git 1.6+
+* redis
 
 ## Setup
 ```bash
 cp config/global/gemoire.yml{.example,}
+cp config/global/sidekiq.yml{.example,}
 vi config/global/gemoire.yml
+vi config/global/sidekiq.yml
 
 #####
 cp config/database.yml{.sqlite3,}
@@ -34,6 +38,7 @@ bundle exec padrino rake ar:migrate
 ## Run development
 ```bash
 bundle exec padrino start
+bundle exec sidekiq -r ./config/sidekiq.rb
 # or
 bundle exec foreman start
 ```

@@ -2,7 +2,14 @@ source 'https://rubygems.org'
 
 ruby '2.1.2'
 
+# Padrino Stable Gem
 gem 'padrino', '0.12.3'
+
+# choose any db
+# ex. If you want use mysql -> bundle install --without pg sqlite3
+gem 'mysql2' , group: :mysql
+gem 'pg'     , group: :postgres
+gem 'sqlite3', group: :sqlite3
 
 gem 'activerecord' , '~> 4.1.6', require: 'active_record'
 gem 'activesupport', '~> 4.1.6', require: 'active_support'
@@ -11,12 +18,10 @@ gem 'bcrypt'
 gem 'foreman', '~> 0.75.0'
 gem 'git'
 gem 'global'
-gem 'mysql2', group: :mysql
-gem 'pg', group: :postgres
 gem 'rake'
 gem 'sass', '~> 3.4.4'
+gem 'sidekiq'
 gem 'slim'
-gem 'sqlite3', group: :sqlite3
 gem 'unicorn'
 gem 'yard'
 

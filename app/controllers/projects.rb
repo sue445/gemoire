@@ -42,6 +42,7 @@ Gemoire::App.controllers :projects do
 
   post :update_doc, with: :id do
     @project.update_doc_async
+    flash[:success] = "Project was scheduled successfully"
     redirect url(:projects, :index)
   end
 
