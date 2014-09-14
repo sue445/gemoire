@@ -18,7 +18,9 @@
 ## Setup
 ```bash
 cp config/global/gemoire.yml{.example,}
+cp config/global/sidekiq.yml{.example,}
 vi config/global/gemoire.yml
+vi config/global/sidekiq.yml
 
 #####
 cp config/database.yml{.sqlite3,}
