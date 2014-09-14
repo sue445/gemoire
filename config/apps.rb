@@ -21,6 +21,13 @@
 #   Padrino.mount('AppName', :app_file => 'path/to/file', :app_class => 'BlogApp').to('/')
 #
 
+def copy_global_for_heroku(name)
+  unless File.exist?(Padrino.root("config/global/#{name}.yml"))
+    # for Heroku
+    FileUtils.cp(Padrino.root("config/global/#{name}.yml.heroku"), Padrino.root("config/global/#{name}.yml"))
+  end
+end
+
 ##
 # Setup global project settings for your apps. These settings are inherited by every subapp. You can
 # override these settings in the subapps as needed.
@@ -31,16 +38,10 @@ Padrino.configure_apps do
   set :protection, except: :path_traversal
   set :protect_from_csrf, true
 
-  Global.configure do |config|
-    unless File.exist?(Padrino.root("config/global/gemoire.yml"))
-      # for Heroku
-      FileUtils.cp(Padrino.root("config/global/gemoire.yml.heroku"), Padrino.root("config/global/gemoire.yml"))
-    end
-    unless File.exist?(Padrino.root("config/global/redis.yml"))
-      # for Heroku
-      FileUtils.cp(Padrino.root("config/global/redis.yml.heroku"), Padrino.root("config/global/redis.yml"))
-    end
+  copy_global_for_heroku("gemoire")
+  copy_global_for_heroku("redis")
 
+  Global.configure do |config|
     config.environment      = Padrino.env.to_s
     config.config_directory = Padrino.root("config/global")
   end
