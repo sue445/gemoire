@@ -15,8 +15,8 @@ Padrino.after_load do
     # heroku
     server_url = client_url = ENV["REDISCLOUD_URL"]
   else
-    server_url = Global.sidekiq.server_url
-    client_url = Global.sidekiq.client_url
+    server_url = Global.redis.server_url
+    client_url = Global.redis.client_url
   end
   Sidekiq.configure_server do |config|
     config.redis = {url: server_url, namespace: SIDEKIQ_NAMESPACE}

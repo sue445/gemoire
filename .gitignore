@@ -15,4 +15,4 @@ doc/
 config/global/gemoire.yml
 public/doc/
 coverage/
-config/global/sidekiq.yml
+config/global/redis.yml
