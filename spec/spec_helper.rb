@@ -1,13 +1,16 @@
 require 'simplecov'
 require 'coveralls'
+require 'codeclimate-test-reporter'
 
-SimpleCov.formatter = Coveralls::SimpleCov::Formatter
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+  CodeClimate::TestReporter::Formatter,
+  Coveralls::SimpleCov::Formatter
+]
 SimpleCov.start do
-  add_filter 'app/admin'
+  add_filter 'admin'
+  add_filter 'vendor'
 end
 
-require "codeclimate-test-reporter"
-CodeClimate::TestReporter.start
 
 RACK_ENV = 'test' unless defined?(RACK_ENV)
 require File.expand_path(File.dirname(__FILE__) + "/../config/boot")
