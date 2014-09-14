@@ -12,14 +12,15 @@ machine:
 ## Customize dependencies
 dependencies:
   pre:
-    - cp config/global/gemoire.yml{.example,}
+    # - cp config/global/gemoire.yml{.example,}
 
 ## Customize database setup
 database:
   override:
     # replace CircleCI's generated database.yml
-    - cp config/database.yml{.sqlite3,}
-    - RACK_ENV=test bundle exec rake ar:migrate:reset
+    # - cp config/database.yml{.sqlite3,}
+    # - RACK_ENV=test bundle exec rake ar:migrate:reset
+    - echo "do nothing"
 
 ## Customize test commands
 test:
