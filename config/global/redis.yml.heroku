@@ -8,4 +8,5 @@ development:
 test:
 
 production:
+  # If you want to use sidekiq, require job dyno
   enabled: false

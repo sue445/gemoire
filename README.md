@@ -34,6 +34,9 @@ cp config/database.yml{.postgresql,}
 vi config/database.yml
 
 bundle exec padrino rake ar:migrate
+
+# setup admin user/pass
+bundle exec rake db:seed
 ```
 
 ## Run development
@@ -48,4 +51,10 @@ bundle exec foreman start
 ```bash
 RACK_ENV=test bundle exec rake ar:migrate
 bundle exec rspec
+```
+
+## for Heroku
+```bash
+vi config/global/gemoire.yml.heroku
+vi config/global/sidekiq.yml.heroku
 ```
