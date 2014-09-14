@@ -54,7 +54,11 @@ class Project < ActiveRecord::Base
   end
 
   def update_doc_async
-    delay.update_doc
+    if Global.redis.enabled
+      delay.update_doc
+    else
+      update_doc
+    end
   end
 
   def update_doc

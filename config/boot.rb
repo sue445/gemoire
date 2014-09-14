@@ -45,19 +45,12 @@ Padrino.after_load do
 
   SIDEKIQ_NAMESPACE = "gemoire"
   require "sidekiq"
-  if ENV["REDISCLOUD_URL"]
-    # heroku
-    server_url = client_url = ENV["REDISCLOUD_URL"]
-  else
-    server_url = Global.redis.server_url
-    client_url = Global.redis.client_url
-  end
   Sidekiq.configure_server do |config|
-    config.redis = { url: server_url, namespace: SIDEKIQ_NAMESPACE }
+    config.redis = { url: Global.redis.server_url, namespace: SIDEKIQ_NAMESPACE }
   end
 
   Sidekiq.configure_client do |config|
-    config.redis = { url: client_url, namespace: SIDEKIQ_NAMESPACE }
+    config.redis = { url: Global.redis.client_url, namespace: SIDEKIQ_NAMESPACE }
   end
 
   Sidekiq.redis do |conn|

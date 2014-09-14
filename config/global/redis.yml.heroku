@@ -1,0 +1,11 @@
+default:
+  enabled: true
+  server_url: <%= ENV["REDISCLOUD_URL"] %>
+  client_url: <%= ENV["REDISCLOUD_URL"] %>
+
+development:
+
+test:
+
+production:
+  enabled: false
