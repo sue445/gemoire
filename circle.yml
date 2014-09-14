@@ -7,7 +7,6 @@ machine:
   environment:
     CODECLIMATE_REPO_TOKEN: 38d34b549aa5f497773fa59be275e89b798631012dec08f21f0a9ca1c5cdffb9
     COVERALLS_REPO_TOKEN: RuKfM9BdUaOqw9wS99oePc8TNtsQFAiie
-    DATABASE_URL: postgres://ubuntu:@127.0.0.1:5432/circle_test
 
 ## Customize dependencies
 dependencies:
