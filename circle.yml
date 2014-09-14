@@ -33,6 +33,7 @@ deployment:
   production:
     branch: master
     commands:
+      - heroku config:add BUNDLE_WITHOUT="test:development:sqlite3:mysql" --app gemoire
       - git push git@heroku.com:gemoire.git $CIRCLE_SHA1:refs/heads/master
       - heroku run rake ar:migrate --app gemoire:
           timeout: 400 # if your deploys take a long time
