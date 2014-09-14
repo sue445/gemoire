@@ -42,7 +42,12 @@ Gemoire::App.controllers :webhook do
   end
 
   before do
-    @payload = JSON.parse(request.body.read).with_indifferent_access
+    begin
+      @payload = JSON.parse(request.body.read).with_indifferent_access
+    rescue JSON::ParserError
+      # Bad Request
+      halt 400
+    end
   end
 
 end
