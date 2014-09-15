@@ -78,11 +78,11 @@ class Project < ActiveRecord::Base
   end
 
   def doc_dir
-    Config.doc_root_dir.join(self.name)
+    Config.doc_root_dir.join(name)
   end
 
   def repository_dir
-    Config.satellite_root_dir.join(self.id.to_s)
+    Config.satellite_root_dir.join(id.to_s)
   end
 
   private
