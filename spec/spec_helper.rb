@@ -161,3 +161,6 @@ def assigns(name)
   last_application.assigns(name)
 end
 
+def fixture(name)
+  spec_dir.join("fixtures", name).read
+end

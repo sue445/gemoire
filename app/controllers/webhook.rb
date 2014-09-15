@@ -30,7 +30,18 @@ Gemoire::App.controllers :webhook do
   end
 
   post :github do
+    branch = @payload[:ref].gsub("refs/heads/", "")
+    remote_urls = [
+      @payload[:repository][:git_url],
+      @payload[:repository][:ssh_url],
+      @payload[:repository][:clone_url],
+    ]
+    @projects = Project.where(remote_url: remote_urls, branch: branch)
+    halt 404 if @projects.empty?
 
+    @projects.map(&:update_doc_async)
+
+    @projects.to_json
   end
 
   post :bitbucket do
