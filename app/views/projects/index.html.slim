@@ -1,5 +1,10 @@
 h1 Projects
 
+- content_for :include do
+  = javascript_include_tag 'projects'
+
+#alert-area
+
 table.table.table-striped
   thead
     tr
@@ -25,9 +30,8 @@ table.table.table-striped
         td = datetime_to_s(project.created_at)
         td = datetime_to_s(project.updated_at)
         td
-          = form_tag url(:projects, :update_doc, id: project.id)
-            button.btn.btn-default
-              = octicon("sync")
+          button.btn.btn-default.project_update_doc data-project-id=project.id
+            = octicon("sync")
         td
           = link_to url(:projects, :edit, id: project.id) do
             button.btn.btn-default

@@ -40,10 +40,10 @@ Gemoire::App.controllers :projects do
     end
   end
 
-  post :update_doc, with: :id do
+  post :update_doc, with: :id, provides: [:json] do
     @project.update_doc_async
-    flash[:success] = "Project was scheduled successfully"
-    redirect url(:projects, :index)
+
+    { message: "Project was scheduled successfully" }.to_json
   end
 
   get :edit, with: :id do
@@ -64,7 +64,7 @@ Gemoire::App.controllers :projects do
     render :show
   end
 
-  before except: [:index, :new, :create] do
+  before :update_doc, :edit, :update, :show do
     @project = Project.find(params[:id])
   end
 end

@@ -45,6 +45,6 @@ RSpec.describe "ProjectsController" do
 
     let(:project){ create(:project) }
 
-    it{ expect(last_response).to be_redirect }
+    it{ expect(last_response).to be_ok }
   end
 end
