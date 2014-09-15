@@ -21,27 +21,18 @@ Gemoire::App.controllers :webhook do
   # end
 
   post :index do
-    @projects = Project.where(remote_url: @payload[:remote_url], branch: @payload[:branch])
-    halt 404 if @projects.empty?
-
-    @projects.map(&:update_doc_async)
-
-    @projects.to_json
+    update_projects(@payload[:remote_url], @payload[:branch])
   end
 
   post :github do
-    branch = @payload[:ref].gsub("refs/heads/", "")
     remote_urls = [
       @payload[:repository][:git_url],
       @payload[:repository][:ssh_url],
       @payload[:repository][:clone_url],
     ]
-    @projects = Project.where(remote_url: remote_urls, branch: branch)
-    halt 404 if @projects.empty?
+    branch = @payload[:ref].gsub("refs/heads/", "")
 
-    @projects.map(&:update_doc_async)
-
-    @projects.to_json
+    update_projects(remote_urls, branch)
   end
 
   post :bitbucket do
@@ -58,6 +49,17 @@ Gemoire::App.controllers :webhook do
     rescue JSON::ParserError
       # Bad Request
       halt 400
+    end
+  end
+
+  helpers do
+    def update_projects(remote_urls, branch)
+      @projects = Project.where(remote_url: remote_urls, branch: branch)
+      halt 404 if @projects.empty?
+
+      @projects.map(&:update_doc_async)
+
+      @projects.to_json
     end
   end
 
