@@ -31,7 +31,9 @@ Gemoire::App.controllers :webhook do
       @payload[:repository][:ssh_url],
       @payload[:repository][:clone_url],
     ]
-    branch = @payload[:ref].gsub("refs/heads/", "")
+
+    # When deliver test (via. github), ref is empty
+    branch = @payload[:ref] ? @payload[:ref].gsub("refs/heads/", "") : "master"
 
     update_projects(remote_url: remote_urls, branch: branch)
   end
