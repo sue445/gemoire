@@ -43,7 +43,7 @@ RSpec.describe "WebhookController" do
 
     let(:remote_url){ "git@github.com:dummy/dummy.git" }
     let(:branch)    { "master" }
-    let(:payload)   { fixture("payload/github.json") }
+    let(:payload)   { fixture("payloads/github.json") }
 
     it_behaves_like :a_webhook do
       let(:valid_remote_url){ "git@github.com:baxterthehacker/public-repo.git" }
