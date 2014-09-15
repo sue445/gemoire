@@ -28,7 +28,7 @@ RSpec.describe "WebhookController" do
 
     subject!{ post "/webhook", payload }
 
-    let(:payload){ { remote_url: remote_url, branch: branch}.to_json }
+    let(:payload){ { remote_url: remote_url, branch: branch }.to_json }
 
     it_behaves_like :a_webhook do
       let(:valid_remote_url){ project.remote_url }
