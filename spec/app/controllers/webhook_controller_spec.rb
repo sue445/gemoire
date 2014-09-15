@@ -71,4 +71,20 @@ RSpec.describe "WebhookController" do
       let(:valid_repository_url){ "https://bitbucket.org/sue445/hook_example" }
     end
   end
+
+  describe "POST /webhook/gitlab" do
+    let!(:project){ create(:project, remote_url: remote_url, branch: branch) }
+
+    subject!{ post "/webhook/gitlab", payload }
+
+    let(:remote_url){ "git@github.com:dummy/dummy.git" }
+    let(:branch)    { "master" }
+    let(:payload)   { fixture("payloads/gitlab.json") }
+
+    it_behaves_like :a_webhook do
+      let(:valid_remote_url)    { "git@example.com:diaspora.git" }
+      let(:valid_repository_url){ "http://example.com/diaspora" }
+      let(:valid_branch)        { "master" }
+    end
+  end
 end

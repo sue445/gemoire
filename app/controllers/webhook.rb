@@ -47,7 +47,10 @@ Gemoire::App.controllers :webhook do
 
   # cf) https://github.com/gitlabhq/gitlabhq/blob/master/doc/web_hooks/web_hooks.md
   post :gitlab do
+    remote_url = @payload[:repository][:url]
+    branch = @payload[:ref].gsub("refs/heads/", "")
 
+    update_projects(remote_url: remote_url, branch: branch)
   end
 
   before except: [:bitbucket] do
