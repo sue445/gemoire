@@ -77,6 +77,14 @@ class Project < ActiveRecord::Base
     doc_dir.join("index.html").exist?
   end
 
+  def doc_dir
+    Config.doc_root_dir.join(self.name)
+  end
+
+  def repository_dir
+    Config.satellite_root_dir.join(self.id.to_s)
+  end
+
   private
   def git
     @git ||= Git.open(repository_dir, log: git_logger, repository: repository_dir.join(".git"))
@@ -84,14 +92,6 @@ class Project < ActiveRecord::Base
 
   def git_logger
     Logger.new(Padrino.root("log", "#{Padrino.env}.log"))
-  end
-
-  def doc_dir
-    Config.doc_root_dir.join(self.name)
-  end
-
-  def repository_dir
-    Config.satellite_root_dir.join(self.id.to_s)
   end
 
   def git_fetch_and_reset
