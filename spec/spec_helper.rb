@@ -111,6 +111,7 @@ RSpec.configure do |config|
   config.include Rack::Test::Methods
   config.include FactoryGirl::Syntax::Methods
   config.include RSpec::Padrino
+  config.include RSpec::JsonMatcher
 
   # database_cleaner
   config.before(:suite) do
@@ -160,3 +161,6 @@ def assigns(name)
   last_application.assigns(name)
 end
 
+def fixture(name)
+  spec_dir.join("fixtures", name).read
+end

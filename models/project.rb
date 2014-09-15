@@ -9,15 +9,16 @@
 #  commit         :string(255)
 #  created_at     :datetime
 #  updated_at     :datetime
-#  repository_url :string(255)
+#  repository_url :string(255)      not null
 #
 # Indexes
 #
-#  index_projects_on_name  (name) UNIQUE
+#  index_projects_on_name        (name) UNIQUE
+#  index_projects_on_remote_url  (remote_url)
 #
 
 class Project < ActiveRecord::Base
-  validates_presence_of :name, :branch, :remote_url
+  validates_presence_of :name, :branch, :remote_url, :repository_url
   validates_format_of :name  , with: /[a-zA-Z.0-9_\-]+/
   validates_format_of :branch, with: /[a-zA-Z.0-9_\-]+/
   validates_format_of :repository_url, with: %r{https?://.+}, allow_nil: true

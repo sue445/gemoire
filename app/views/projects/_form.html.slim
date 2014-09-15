@@ -9,6 +9,7 @@
 
   .form-group class=f.has_error(:repository_url)
     = f.label :repository_url, class: "col-sm-2 control-label"
+      = require_mark
     .col-sm-10
       = f.text_field :repository_url, class: "form-control", placeholder: "https://github.com/yourname/awesome-repo"
 
