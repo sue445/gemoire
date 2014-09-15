@@ -1,6 +1,6 @@
 {
   "name": "Gemoire",
-  "description": "Hosting YARD doc",
+  "description": "Gemoire (Gem + grimoire) is YARD hosting app, like RubyDoc.info",
   "keywords": ["ruby", "padrino", "yard"],
   "scripts": {
     "postdeploy": "bundle exec rake ar:create ar:migrate"

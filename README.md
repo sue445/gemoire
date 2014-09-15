@@ -62,3 +62,6 @@ vi config/global/sidekiq.yml.heroku
 
 ## Webhooks
 see [this](doc/webhook.md)
+
+## Sandbox
+http://gemoire.herokuapp.com/
