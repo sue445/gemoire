@@ -16,9 +16,8 @@ table.table.table-striped
     - @projects.each do |project|
       tr
         td
-          - if project.repository_url.present?
-            = link_to project.repository_url do
-              = repository_icon(project)
+          = link_to project.repository_url do
+            = repository_icon(project)
           =< link_to project.name, url(:projects, :show, id: project.id)
         td = project.remote_url
         td = project.branch
