@@ -10,6 +10,14 @@ Gemoire (Gem + grimoire) is [YARD](http://yardoc.org/) hosting app, like [RubyDo
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
+## Features
+* clone/fetch git repository
+* generate and browse yard document
+* webhooks
+  * Github :octocat:
+  * Bitbucket
+  * Gitlab
+
 ## Requirements
 * Ruby 2.1.2
 * some DBs: MySQL, PostgreSQL or sqlite3
