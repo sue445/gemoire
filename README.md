@@ -19,7 +19,7 @@ Gemoire (Gem + grimoire) is [YARD](http://yardoc.org/) hosting app, like [RubyDo
   * Gitlab
 
 ## Requirements
-* Ruby 2.1.2
+* Ruby 2.1.3
 * some DBs: MySQL, PostgreSQL or sqlite3
 * git 1.6+
 * redis
