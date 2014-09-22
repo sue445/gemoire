@@ -73,6 +73,6 @@ vi config/global/gemoire.yml.heroku
 vi config/global/sidekiq.yml.heroku
 ```
 
-### Caution
+### :warning: Caution
 * generated document and cloned repository are cleared each deploy
 * can not use `ssh://` at `remote_url`
