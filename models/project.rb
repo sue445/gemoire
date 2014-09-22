@@ -22,6 +22,7 @@ class Project < ActiveRecord::Base
   validates_format_of :name  , with: /[a-zA-Z.0-9_\-]+/
   validates_format_of :branch, with: /[a-zA-Z.0-9_\-]+/
   validates_format_of :repository_url, with: %r{https?://.+}, allow_nil: true
+  validates_format_of :remote_url, with: /.+\.git/
 
   after_save    :update_doc_async
   after_destroy :remove_dirs

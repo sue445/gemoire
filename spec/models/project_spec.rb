@@ -94,4 +94,23 @@ RSpec.describe Project do
       expect(doc_file.read).not_to include "gemoire"
     end
   end
+
+  describe "validator" do
+    subject { project.valid? }
+
+    using RSpec::Parameterized::TableSyntax
+
+    where(:remote_url, :is_valid) do
+      "git@github.com:sue445/sample-repo.git"     | true
+      "https://github.com/sue445/sample-repo.git" | true
+      "git://github.com/sue445/sample-repo.git"   | true
+      "https://github.com/sue445/sample-repo"     | false
+    end
+
+    with_them do
+      let(:project){ build(:project, remote_url: remote_url) }
+
+      it{ should be is_valid }
+    end
+  end
 end
