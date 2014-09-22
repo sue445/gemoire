@@ -3,6 +3,7 @@ default:
   satellite_root_dir: tmp/satellite
   time_zone:          Tokyo
   doc_path:           /doc
+  # doc_path:         http://doc.example.com/
 
 development:
 
