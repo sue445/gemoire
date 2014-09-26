@@ -27,9 +27,9 @@ Gemoire (Gem + grimoire) is [YARD](http://yardoc.org/) hosting app, like [RubyDo
 ## Setup
 ```bash
 cp config/global/gemoire.yml{.example,}
-cp config/global/sidekiq.yml{.example,}
+cp config/global/redis.yml{.example,}
 vi config/global/gemoire.yml
-vi config/global/sidekiq.yml
+vi config/global/redis.yml
 
 #####
 cp config/database.yml{.sqlite3,}
@@ -70,7 +70,7 @@ http://gemoire.herokuapp.com/
 ## for Heroku
 ```bash
 vi config/global/gemoire.yml.heroku
-vi config/global/sidekiq.yml.heroku
+vi config/global/redis.yml.heroku
 ```
 
 ### :warning: Caution
