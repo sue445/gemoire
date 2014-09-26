@@ -171,7 +171,7 @@ GEM
     rspec-support (3.1.0)
     rspec-temp_dir (0.0.3)
       rspec
-    sass (3.4.4)
+    sass (3.4.5)
     sidekiq (3.2.5)
       celluloid (= 0.15.2)
       connection_pool (>= 2.0.0)
@@ -248,7 +248,7 @@ DEPENDENCIES
   rspec-padrino
   rspec-parameterized
   rspec-temp_dir (= 0.0.3)
-  sass (~> 3.4.4)
+  sass (~> 3.4.5)
   sidekiq
   slim
   sqlite3
