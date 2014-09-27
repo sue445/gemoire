@@ -6,7 +6,7 @@ ruby '2.1.3'
 gem 'padrino', '0.12.3'
 
 # choose any db
-# ex. If you want use mysql -> bundle install --without pg sqlite3
+# ex. If you want use mysql -> bundle install --without postgres sqlite3
 gem 'mysql2' , group: :mysql
 gem 'pg'     , group: :postgres
 gem 'sqlite3', group: :sqlite3
