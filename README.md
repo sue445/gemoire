@@ -41,7 +41,7 @@ cp config/database.yml{.postgresql,}
 
 vi config/database.yml
 
-bundle exec padrino rake ar:migrate
+bundle exec padrino rake ar:create ar:migrate
 
 # setup admin user/pass
 bundle exec rake db:seed
@@ -61,9 +61,6 @@ RACK_ENV=test bundle exec rake ar:migrate
 bundle exec rspec
 ```
 
-## Webhooks
-see [this](doc/webhook.md)
-
 ## Sandbox
 http://gemoire.herokuapp.com/
 
@@ -76,3 +73,8 @@ vi config/global/redis.yml.heroku
 ### :warning: Caution
 * generated document and cloned repository are cleared each deploy
 * can not use `ssh://` at `remote_url`
+
+## more documents
+* [deploy key](doc/deploy_key.md)
+* [webhook](doc/webhook.md)
+
