@@ -34,7 +34,7 @@ http://localhost:3000/webhook
 ### Setting
 Setting -> Webhooks & Services -> Add Webhooks
 
-![github webhook](github_webhook.png)
+![github webhook](img/github_webhook.png)
 
 ## for Bitbucket
 
@@ -46,11 +46,11 @@ Settings -> Hooks
 
 Choose "POST" and click "Add hook"
 
-![bitbucket webhook](bitbucket_webhook1.png)
+![bitbucket webhook](img/bitbucket_webhook1.png)
 
 And input endpoint url 
 
-![bitbucket webhook](bitbucket_webhook2.png)
+![bitbucket webhook](img/bitbucket_webhook2.png)
 
 ## for Gitlab
 recommend 6.7.0+
@@ -61,4 +61,4 @@ recommend 6.7.0+
 ### Setting
 Setting -> Web Hooks
 
-![gitlab webhook](gitlab_webhook.png)
+![gitlab webhook](img/gitlab_webhook.png)
