@@ -61,9 +61,6 @@ RACK_ENV=test bundle exec rake ar:migrate
 bundle exec rspec
 ```
 
-## Webhooks
-see [this](doc/webhook.md)
-
 ## Sandbox
 http://gemoire.herokuapp.com/
 
@@ -76,3 +73,8 @@ vi config/global/redis.yml.heroku
 ### :warning: Caution
 * generated document and cloned repository are cleared each deploy
 * can not use `ssh://` at `remote_url`
+
+## more documents
+* [deploy key](doc/deploy_key.md)
+* [webhook](doc/webhook.md)
+
