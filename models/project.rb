@@ -57,7 +57,7 @@ class Project < ActiveRecord::Base
 
   def update_doc_async
     if Global.redis.enabled
-      delay.update_doc
+      delay(retry: false).update_doc
     else
       update_doc
     end
