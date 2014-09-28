@@ -44,6 +44,7 @@ cp config/database.yml{.postgresql,}
 
 vi config/database.yml
 
+bundle install
 bundle exec padrino rake ar:create ar:migrate
 
 # setup admin user/pass
