@@ -4,8 +4,8 @@ work_dir: ./tmp/paraduct_workspace
 variables:
   database:
     - sqlite3
-#    - mysql
-#    - postgresql
+    - mysql
+    - postgresql
 max_threads: 4
 rsync_option:
   exclude_from: .paraduct_rsync_exclude.txt
