@@ -11,6 +11,7 @@ machine:
 ## Customize dependencies
 dependencies:
   pre:
+    - gem install paraduct --pre
     # - cp config/global/gemoire.yml{.example,}
 
 ## Customize database setup
@@ -24,9 +25,7 @@ database:
 ## Customize test commands
 test:
   override:
-    - DATABASE=sqlite3 ./script/circle_ci/build.sh
-    - DATABASE=mysql ./script/circle_ci/build.sh
-    - DATABASE=postgresql ./script/circle_ci/build.sh
+    - paraduct test
 
 ## Customize deployment commands
 deployment:
