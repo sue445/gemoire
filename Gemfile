@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.1.4'
+ruby '2.1.5'
 
 # Padrino Stable Gem
 gem 'padrino', '0.12.3'
