@@ -1,5 +1,4 @@
 .git/
 tmp/
-vendor/bundle/
 log/
 coverage/
