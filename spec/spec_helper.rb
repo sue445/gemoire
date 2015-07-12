@@ -1,17 +1,18 @@
-require 'simplecov'
-require 'coveralls'
-require 'codeclimate-test-reporter'
+if ENV["COVERAGE"]
+  require 'simplecov'
+  require 'coveralls'
+  require 'codeclimate-test-reporter'
 
-SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
-  CodeClimate::TestReporter::Formatter,
-  Coveralls::SimpleCov::Formatter
-]
-SimpleCov.start do
-  %w(admin vendor spec).each do |ignore_path|
-    add_filter(ignore_path)
+  SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+    CodeClimate::TestReporter::Formatter,
+    Coveralls::SimpleCov::Formatter
+  ]
+  SimpleCov.start do
+    %w(admin vendor spec).each do |ignore_path|
+      add_filter(ignore_path)
+    end
   end
 end
-
 
 RACK_ENV = 'test' unless defined?(RACK_ENV)
 require File.expand_path(File.dirname(__FILE__) + "/../config/boot")

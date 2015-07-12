@@ -1,0 +1,30 @@
+language: ruby
+rvm:
+  - 2.2.2
+env:
+  - DATABASE=mysql
+  - DATABASE=postgresql
+  - DATABASE=sqlite3
+cache: bundler
+services:
+  - redis-server
+before_script:
+  - export CODECLIMATE_REPO_TOKEN=38d34b549aa5f497773fa59be275e89b798631012dec08f21f0a9ca1c5cdffb9
+  - export COVERALLS_REPO_TOKEN=RuKfM9BdUaOqw9wS99oePc8TNtsQFAiie
+  - export COVERAGE=true
+script: ./script/travis_ci/build.sh
+branches:
+  only:
+    - master
+notifications:
+  email: false
+  slack: $SLACK_ROOM
+
+deploy:
+  provider: heroku
+  api_key: $HEROKU_API_KEY
+  app: gemoire
+  run:
+    - rake ar:migrate
+  on:
+    branch: master

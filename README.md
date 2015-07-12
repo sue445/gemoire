@@ -1,7 +1,7 @@
 # Gemoire
 Gemoire (Gem + grimoire) is [YARD](http://yardoc.org/) hosting app, like [RubyDoc.info](http://rubydoc.info/)
 
-[![Circle CI](https://circleci.com/gh/sue445/gemoire/tree/master.png?style=badge)](https://circleci.com/gh/sue445/gemoire/tree/master)
+[![Build Status](https://travis-ci.org/sue445/gemoire.svg?branch=master)](https://travis-ci.org/sue445/gemoire)
 [![Dependency Status](https://gemnasium.com/sue445/gemoire.svg)](https://gemnasium.com/sue445/gemoire)
 [![Code Climate](https://codeclimate.com/github/sue445/gemoire/badges/gpa.svg)](https://codeclimate.com/github/sue445/gemoire)
 [![Coverage Status](https://img.shields.io/coveralls/sue445/gemoire.svg)](https://coveralls.io/r/sue445/gemoire?branch=master)
