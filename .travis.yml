@@ -28,3 +28,4 @@ deploy:
     - rake ar:migrate
   on:
     branch: master
+    condition: $RVM = "2.2.2" -a $DATABASE = "postgresql"
