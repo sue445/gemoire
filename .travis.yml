@@ -19,6 +19,7 @@ branches:
 notifications:
   email: false
   slack: $SLACK_ROOM
+sudo: false
 
 deploy:
   provider: heroku
