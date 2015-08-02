@@ -82,7 +82,7 @@ GEM
     mime-types (1.25.1)
     minitest (5.7.0)
     moneta (0.7.20)
-    mysql2 (0.3.18)
+    mysql2 (0.3.19)
     netrc (0.10.3)
     padrino (0.12.3)
       padrino-admin (= 0.12.3)
