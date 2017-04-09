@@ -140,6 +140,7 @@ GEM
       rack (>= 1.0)
     raindrops (0.15.0)
     rake (10.4.2)
+    redcarpet (3.4.0)
     redis (3.2.1)
     redis-namespace (1.5.2)
       redis (~> 3.0, >= 3.0.4)
@@ -252,6 +253,7 @@ DEPENDENCIES
   pry-nav
   rack-test
   rake
+  redcarpet
   rspec (~> 3.1.0)
   rspec-json_matcher
   rspec-padrino
